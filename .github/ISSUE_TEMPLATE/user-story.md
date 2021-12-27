@@ -7,9 +7,10 @@ assignees: ''
 
 ---
 
-|   |   |
-|---|---|
-| Use Case |   |
-| Actoren |   |
-| Samenvatting |   |
-| Stappenplan |   |
+# Use case
+
+# Actoren
+
+# Samenvatting
+
+# Stappenplan
