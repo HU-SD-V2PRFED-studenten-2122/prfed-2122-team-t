@@ -50,11 +50,11 @@ export function editTentamen(id, tentamen) {
  * Verwijder een tentamen uit de sessie
  * @param {Tentamen} tentamen
  */
-export function deleteTentamen(tentamen) {
+export function deleteTentamen(id) {
     let tentamens = [];
 
     getTentamens().forEach(function (element) {
-        if (element.id != tentamen.id) {
+        if (element.id != id) {
             tentamens.push(element);
         }
     });
