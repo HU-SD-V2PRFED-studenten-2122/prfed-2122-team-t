@@ -16,16 +16,31 @@ export function saveTentamen(tentamen) {
             tentamens.push(element);
         });
 
-        for (let i = 0; i < tentamens.length; i++) {
-            if (tentamens[i].id == tentamen.id) {
-                tentamens[i] = tentamen;
-                return;
-            }
-        }
-
         tentamens.push(tentamen);
     } else {
         tentamens.push(tentamen);
+    }
+
+    sessionStorage.setItem('tentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Wijzig een tentamen
+ * @param {number} id
+ * @param {Tentamen} tentamen
+ */
+export function editTentamen(id, tentamen) {
+    let tentamens = [];
+
+    getTentamens().forEach(function (element) {
+        tentamens.push(element);
+    });
+
+    for (let i = 0; i < tentamens.length; i++) {
+        if (tentamens[i].id == id) {
+            tentamen.id = id;
+            tentamens[i] = tentamen;
+        }
     }
 
     sessionStorage.setItem('tentamens', JSON.stringify(tentamens));

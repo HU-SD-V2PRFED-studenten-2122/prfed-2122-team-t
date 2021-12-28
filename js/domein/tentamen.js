@@ -1,4 +1,6 @@
 export class Tentamen {
+    static idCount = 0;
+
     /**
      * Tentamen constructor
      * @constructor
@@ -14,8 +16,8 @@ export class Tentamen {
      * @param {string} opmerking
      * @param {Tentamen} nieuwTentamen
      */
-    constructor(id, opleiding, code, naam, toetsvorm, weging, ec, periode, leider, opmerking, nieuwTentamen) {
-        this.id = id;
+    constructor(opleiding, code, naam, toetsvorm, weging, ec, periode, leider, opmerking, nieuwTentamen) {
+        this.id = Tentamen.idCount;
         this.opleiding = opleiding;
         this.code = code;
         this.naam = naam;
@@ -26,5 +28,7 @@ export class Tentamen {
         this.leider = leider;
         this.opmerking = opmerking;
         this.nieuwTentamen = nieuwTentamen;
+
+        Tentamen.idCount++;
     }
 }
