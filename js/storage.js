@@ -48,7 +48,7 @@ export function editTentamen(id, tentamen) {
 
 /**
  * Verwijder een tentamen uit de sessie
- * @param {Tentamen} tentamen
+ * @param {number} id
  */
 export function deleteTentamen(id) {
     let tentamens = [];
