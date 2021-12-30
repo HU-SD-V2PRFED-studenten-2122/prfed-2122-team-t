@@ -30,7 +30,7 @@
 
 # Sitemap & Wireframes
 
-[Interactieve wireframe](https://xd.adobe.com/view/ac25fdff-4805-466b-b034-09051dde8950-f976/?fullscreen)
+[Interactieve wireframe](https://xd.adobe.com/view/5d901b42-0872-49b4-97a5-0475071cdade-08c3/?fullscreen)
 
 ## Uitgelogd
 

@@ -6,5 +6,5 @@ Een tool voor de Hogeschool Utrecht om een overzicht te creëren van de conversi
 
 ```
 npm install
-live-server
+npm run start
 ```
