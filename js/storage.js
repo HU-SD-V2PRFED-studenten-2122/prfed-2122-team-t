@@ -2,7 +2,13 @@ import {Tentamen} from './domein/tentamen.js';
 import {Gebruiker} from './domein/gebruiker.js';
 
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
+<<<<<<< Updated upstream
 sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker]));
+=======
+let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordinator');
+let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
+sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
+>>>>>>> Stashed changes
 
 /**
  * Sla een tentamen op in de sessie
