@@ -20,7 +20,7 @@ class loginComponent extends LitElement{
 
                     <form class="loginform">
                         <div class="form-outline mb-4">
-                            <label for="mailInput" class="form-label" for="typeEmailX-2">Emailadres:</label>
+                            <label for="mailInput" class="form-label" for="typeEmailX-2">E-mail adres:</label>
                             <input id="mailInput" type="email" class="form-control form-control-lg"
                                    placeholder="test@hu.nl" tabindex="0"/>
                         </div>
