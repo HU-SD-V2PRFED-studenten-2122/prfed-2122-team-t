@@ -13,26 +13,20 @@
 
     <div id="background"></div>
 
-    <a href="/login.html" class="btn btn-primary" id="auth-button" tabindex="1">Login</a>
-
     <div class="container">
 
         <div class="card">
 
-            <div class="card-header" tabindex="2">
+            <div class="card-header" tabindex="1">
                 Conversietool HU
+
+                <a href="/index.html" class="float-right" id="loguitbtn" onclick="setLoggedOut" tabindex="2">Uitloggen</a>
             </div>
 
             <div class="card-body">
 
                 <div class="center" tabindex="3">
-
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, iusto labore nemo nesciunt obcaecati officia pariatur quae reiciendis sed sequi totam vitae. Aperiam dolor, enim inventore molestias mollitia non perspiciatis provident quam sed vero. A alias atque consequatur distinctio ducimus fuga laudantium, maiores perspiciatis quisquam rem ullam veniam vero, voluptas.</p>
-
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur consequuntur et magni nisi suscipit ullam ut veritatis. Accusamus amet aperiam at aut debitis doloribus esse et, excepturi exercitationem maiores modi necessitatibus quas quos sequi tempora tenetur velit veritatis, voluptatibus?</p>
-
-                    <a href="#" class="btn btn-primary" tabindex="4">Open de tool</a>
-
+                    <p>WELKOM!</p>
                 </div>
 
             </div>
@@ -41,7 +35,23 @@
 
     </div>
 
-    <script src="dist/bundle.js"></script>
+    <script src="js/index.js" type="module"></script>
+    <script>
+        function checkLoggedIn(){            
+            if(sessionStorage.getItem("ingelogd") != 'ja'){
+                window.alert('Log eerst in!');
+                document.querySelector('.card-body').innerHTML = '<h1> </h1>'
+                window.location='/index.html';
+            }
+        }
+
+        function setLoggedOut(){
+            window.location = '/index.html';
+            sessionStorage.setItem('ingelogd','nee');
+        }        
+        
+        checkLoggedIn();
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
