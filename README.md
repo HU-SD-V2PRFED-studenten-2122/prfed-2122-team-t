@@ -7,4 +7,5 @@ Een tool voor de Hogeschool Utrecht om een overzicht te creëren van de conversi
 ```
 npm install
 npm run start
+webpack --watch --progress --mode=development
 ```
