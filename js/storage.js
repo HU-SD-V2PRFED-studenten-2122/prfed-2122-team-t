@@ -132,3 +132,10 @@ export function publishDraftTentamen(tentamen) {
     deleteDraftTentamen(tentamen.id);
     saveTentamen(tentamen);
 }
+
+/**
+ * Check of iemand is ingelogd
+ */
+export function checkLoggedIn(){
+    return sessionStorage.getItem("ingelogd") == 'ja';
+}
