@@ -2,7 +2,9 @@ import {Tentamen} from './domein/tentamen.js';
 import {Gebruiker} from './domein/gebruiker.js';
 
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
-sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker]));
+let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordinator');
+let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
+sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
 
 /**
  * Sla een tentamen op in de sessie
@@ -76,4 +78,64 @@ export function getTentamens() {
  */
 export function getGebruikers() {
     return JSON.parse(sessionStorage.getItem('gebruikers'));
+}
+
+/**
+ * Sla een draft tentamen op in de sessie
+ * @param {Tentamen} tentamen
+ */
+export function saveDraftTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('draftTentamens') != null) {
+        getDraftTentamens().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Haal alle draft tentamens op in de sessie
+ * @returns {array}
+ */
+export function getDraftTentamens() {
+    return JSON.parse(sessionStorage.getItem('draftTentamens'));
+}
+
+/**
+ * Verwijder een draft tentamen uit de sessie
+ * @param {number} id
+ */
+export function deleteDraftTentamen(id) {
+    let tentamens = [];
+
+    getDraftTentamens().forEach(function (element) {
+        if (element.id != id) {
+            tentamens.push(element);
+        }
+    });
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Publiceer een draft tentamen
+ * @param tentamen
+ */
+export function publishDraftTentamen(tentamen) {
+    deleteDraftTentamen(tentamen.id);
+    saveTentamen(tentamen);
+}
+
+/**
+ * Check of iemand is ingelogd
+ */
+export function checkLoggedIn(){
+    return sessionStorage.getItem("ingelogd") == 'ja';
 }
