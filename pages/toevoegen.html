@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -27,7 +28,169 @@
 
         <div class="card-body">
 
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="center">Oud Tentamen</h5>
+                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                        <div class="form-group row">
+                            <label for="opleiding-oud" class="col-4 col-form-label">Opleiding:</label>
+                            <div class="col-8">
+                                <input id="opleiding-oud" name="opleiding-oud" placeholder="Opleiding" type="text"
+                                       class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="code-oud" class="col-4 col-form-label">Code:</label>
+                            <div class="col-8">
+                                <input id="code-oud" name="code-oud" placeholder="Code" type="text" class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="naam-oud" class="col-4 col-form-label">Naam:</label>
+                            <div class="col-8">
+                                <input id="naam-oud" name="naam-oud" placeholder="Naam" type="text" class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="toetsvorm-oud" class="col-4 col-form-label">Toetsvorm:</label>
+                            <div class="col-8">
+                                <input id="toetsvorm-oud" name="toetsvorm-oud" placeholder="Toetsvorm" type="text"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="weging-oud" class="col-8 col-form-label">Weging:</label>
+                                    <div class="col-4">
+                                        <select id="weging-oud" name="weging-oud" class="custom-select"
+                                                required="required">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="ec-oud" class="col-8 col-form-label">EC:</label>
+                                    <div class="col-4">
+                                        <select id="ec-oud" name="ec-oud" class="custom-select"
+                                                required="required">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5 class="center">Nieuw Tentamen</h5>
+                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                        <div class="form-group row">
+                            <label for="opleiding-nieuw" class="col-4 col-form-label">Opleiding:</label>
+                            <div class="col-8">
+                                <input id="opleiding-nieuw" name="opleiding-nieuw" placeholder="Opleiding" type="text"
+                                       class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="code-nieuw" class="col-4 col-form-label">Code:</label>
+                            <div class="col-8">
+                                <input id="code-nieuw" name="code-nieuw" placeholder="Code" type="text"
+                                       class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="naam-nieuw" class="col-4 col-form-label">Naam:</label>
+                            <div class="col-8">
+                                <input id="naam-nieuw" name="naam-nieuw" placeholder="Naam" type="text"
+                                       class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label">Toetsvorm:</label>
+                            <div class="col-8">
+                                <input id="toetsvorm-nieuw" name="toetsvorm-nieuw" placeholder="Toetsvorm" type="text"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="weging-nieuw" class="col-8 col-form-label">Weging:</label>
+                                    <div class="col-4">
+                                        <select id="weging-nieuw" name="weging-nieuw" class="custom-select"
+                                                required="required">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="ec-nieuw" class="col-8 col-form-label">EC:</label>
+                                    <div class="col-4">
+                                        <select id="ec-nieuw" name="ec-nieuw" class="custom-select"
+                                                required="required">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; padding: 0 15px 0 15px;">
+                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="periode" class="col-4 col-form-label">Periode:</label>
+                            <div class="col-8">
+                                <input id="periode" name="periode" placeholder="Periode" type="text"
+                                       class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="leider" class="col-4 col-form-label">Leider:</label>
+                            <div class="col-8">
+                                <input id="leider" name="leider" placeholder="Leider" type="text" class="form-control"
+                                       required="required">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="opmerking" class="col-4 col-form-label">Opmerking:</label>
+                            <div class="col-8">
+                                    <textarea id="opmerking" name="opmerking" cols="40" rows="5"
+                                              class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
         </div>
 
@@ -37,8 +200,14 @@
 
 <script src="../dist/bundle.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
