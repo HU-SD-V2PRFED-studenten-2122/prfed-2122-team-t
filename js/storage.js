@@ -1,10 +1,27 @@
 import {Tentamen} from './domein/tentamen.js';
 import {Gebruiker} from './domein/gebruiker.js';
 
+// Test data
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
 let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordinator');
 let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
 sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
+
+/**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findTentamenById(id) {
+    if (sessionStorage.getItem('tentamens') != null) {
+        for (let i = 0; i < getTentamens().length; i++) {
+            if (getTentamens()[i].id == id)
+                return getTentamens()[i];
+        }
+    }
+
+    return null;
+}
 
 /**
  * Sla een tentamen op in de sessie
@@ -135,6 +152,7 @@ export function publishDraftTentamen(tentamen) {
 
 /**
  * Check of iemand is ingelogd
+ * @returns {boolean}
  */
 export function checkLoggedIn(){
     return sessionStorage.getItem("ingelogd") == 'ja';

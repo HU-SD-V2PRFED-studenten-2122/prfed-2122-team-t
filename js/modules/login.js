@@ -1,7 +1,7 @@
-import {html,css,LitElement } from "lit-element";
+import {html,css,LitElement } from "lit";
 import * as storage from "../storage.js";
 
-class loginComponent extends LitElement{
+class LoginComponent extends LitElement{
 
     static get styles(){
         return css`           
@@ -32,7 +32,7 @@ class loginComponent extends LitElement{
                         </div>
 
                         <span id="logintext"></span>
-                        <a href="#" class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</a>
+                        <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
                         <a href="/index.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
                     </form>
@@ -45,7 +45,9 @@ class loginComponent extends LitElement{
         return this;
     }
 
-    login() {
+    login(e) {
+        e.preventDefault();
+
         sessionStorage.setItem('email', this.renderRoot.querySelector("#mailInput").value);
         sessionStorage.setItem('wachtwoord',this.renderRoot.querySelector("#wwInput").value);
 
@@ -99,4 +101,4 @@ class loginComponent extends LitElement{
 
 }
 
-customElements.define('login-component',loginComponent);
+customElements.define('login-component', LoginComponent);
