@@ -79,3 +79,56 @@ export function getTentamens() {
 export function getGebruikers() {
     return JSON.parse(sessionStorage.getItem('gebruikers'));
 }
+
+/**
+ * Sla een draft tentamen op in de sessie
+ * @param {Tentamen} tentamen
+ */
+export function saveDraftTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('draftTentamens') != null) {
+        getDraftTentamens().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Haal alle draft tentamens op in de sessie
+ * @returns {array}
+ */
+export function getDraftTentamens() {
+    return JSON.parse(sessionStorage.getItem('draftTentamens'));
+}
+
+/**
+ * Verwijder een draft tentamen uit de sessie
+ * @param {number} id
+ */
+export function deleteDraftTentamen(id) {
+    let tentamens = [];
+
+    getDraftTentamens().forEach(function (element) {
+        if (element.id != id) {
+            tentamens.push(element);
+        }
+    });
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Publiceer een draft tentamen
+ * @param tentamen
+ */
+export function publishDraftTentamen(tentamen) {
+    deleteDraftTentamen(tentamen.id);
+    saveTentamen(tentamen);
+}
