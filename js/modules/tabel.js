@@ -35,43 +35,6 @@ class InzichtTabel extends LitElement {
         `;
     }
 
-    // render() {
-    //     return html`
-    //
-    //     <div class="container">
-    //         <input class="form-control" id="myInput" type="text" placeholder="Search..">
-    //         <button class="btn btn-primary" @click="${this.search}">zoeken</button>
-    //         <br>
-    //         <table class="table">
-    //             <tr>
-    //                 <td>
-    //                     <table class="table">
-    //                         <tr>
-    //                             <th>Opleiding</th>
-    //                             <th>Code</th>
-    //                             <th>Naam</th>
-    //                             <th>Toets</th>
-    //                             <th>EC</th>
-    //                         </tr>
-    //
-    //                     </table>
-    //                 </td>
-    //             </tr>
-    //             <tr>
-    //                 <td>
-    //                     <div style="height: 500px; overflow-y: auto">
-    //                         <table id="tableData" class="table table-bordered table-striped">
-    //                             <tbody>
-    //
-    //                             </tbody>
-    //                         </table>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         </table>
-    //     </div>
-    //     `;
-    // }
 
     createRenderRoot() {
         return this;
@@ -96,8 +59,9 @@ class InzichtTabel extends LitElement {
                 "<td>" + tentamens[index].toetsvorm + "</td>" +
                 "<td>" + tentamens[index].ec + "</td>" +
                 "</tr>";
-            document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length-1]
-                .setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+            const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
+            element.setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+            element.setAttribute("style","cursor: pointer")
         }
 
     }
@@ -118,8 +82,9 @@ class InzichtTabel extends LitElement {
                     "<td>" + tentamens[index].toetsvorm + "</td>" +
                     "<td>" + tentamens[index].ec + "</td>" +
                     "</tr>";
-                document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length-1]
-                    .setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+                const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
+                element.setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+                element.setAttribute("style","cursor: pointer")
             }
         }
 
