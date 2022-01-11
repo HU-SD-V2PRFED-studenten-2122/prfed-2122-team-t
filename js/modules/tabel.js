@@ -42,12 +42,7 @@ class InzichtTabel extends LitElement {
 
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
-        // storage.saveTentamen(new Tentamen("jaap", "zh213", "janjaap", "test", "test", 5, "test", "test", "test", null))
-        // storage.saveTentamen(new Tentamen("jan", "u23h4", "pietklaas", "test", "test", 5, "test", "test", "test", null))
-        // storage.saveTentamen(new Tentamen("piet", "123h", "janpiet", "test", "test", 5, "test", "test", "test", null))
-        // storage.saveTentamen(new Tentamen("klaas", "uih23", "pieterjan", "test", "test", 5, "test", "test", "test", null))
         const tentamens = storage.getTentamens();
-        console.log(storage.getTentamens())
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         for (let index = 0; index < tentamens.length; index++) {
             //insert Row
@@ -60,10 +55,9 @@ class InzichtTabel extends LitElement {
                 "<td>" + tentamens[index].ec + "</td>" +
                 "</tr>";
             const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-            element.setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+            element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'")
             element.setAttribute("style","cursor: pointer")
         }
-
     }
 
     search() {
@@ -83,13 +77,12 @@ class InzichtTabel extends LitElement {
                     "<td>" + tentamens[index].ec + "</td>" +
                     "</tr>";
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("onclick","location.href='" + tentamens[index].id + "'")
+                element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'")
                 element.setAttribute("style","cursor: pointer")
             }
         }
 
     }
-
 }
 
 customElements.define('inzien-element', InzichtTabel);
