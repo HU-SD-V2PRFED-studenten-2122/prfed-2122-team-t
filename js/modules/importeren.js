@@ -24,6 +24,10 @@ class Importeren extends LitElement {
         return this;
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+    }
+
     import() {
         let file = document.getElementById('file-input').files[0];
 

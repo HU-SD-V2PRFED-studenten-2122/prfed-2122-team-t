@@ -44,6 +44,26 @@ export function saveTentamen(tentamen) {
 }
 
 /**
+ * Sla een tentamen op in de sessie in het archief
+ * @param {Tentamen} tentamen
+ */
+export function archiveerTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('archief') != null) {
+        getArchief().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
+}
+
+/**
  * Wijzig een tentamen
  * @param {number} id
  * @param {Tentamen} tentamen
@@ -87,6 +107,14 @@ export function deleteTentamen(id) {
  */
 export function getTentamens() {
     return JSON.parse(sessionStorage.getItem('tentamens'));
+}
+
+/**
+ * Haal alle tentamens op uit het archief
+ * @returns {array}
+ */
+export function getArchief() {
+    return JSON.parse(sessionStorage.getItem('archief'));
 }
 
 /**
