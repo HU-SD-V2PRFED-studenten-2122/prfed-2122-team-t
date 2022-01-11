@@ -1,10 +1,27 @@
 import {Tentamen} from './domein/tentamen.js';
 import {Gebruiker} from './domein/gebruiker.js';
 
+// Test data
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
 let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordinator');
 let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
 sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
+
+/**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findTentamenById(id) {
+    if (sessionStorage.getItem('tentamens') != null) {
+        for (let i = 0; i < getTentamens().length; i++) {
+            if (getTentamens()[i].id == id)
+                return getTentamens()[i];
+        }
+    }
+
+    return null;
+}
 
 /**
  * Sla een tentamen op in de sessie
@@ -24,6 +41,26 @@ export function saveTentamen(tentamen) {
     }
 
     sessionStorage.setItem('tentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Sla een tentamen op in de sessie in het archief
+ * @param {Tentamen} tentamen
+ */
+export function archiveerTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('archief') != null) {
+        getArchief().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
 }
 
 /**
@@ -70,6 +107,14 @@ export function deleteTentamen(id) {
  */
 export function getTentamens() {
     return JSON.parse(sessionStorage.getItem('tentamens'));
+}
+
+/**
+ * Haal alle tentamens op uit het archief
+ * @returns {array}
+ */
+export function getArchief() {
+    return JSON.parse(sessionStorage.getItem('archief'));
 }
 
 /**
@@ -131,4 +176,12 @@ export function deleteDraftTentamen(id) {
 export function publishDraftTentamen(tentamen) {
     deleteDraftTentamen(tentamen.id);
     saveTentamen(tentamen);
+}
+
+/**
+ * Check of iemand is ingelogd
+ * @returns {boolean}
+ */
+export function checkLoggedIn(){
+    return sessionStorage.getItem("ingelogd") == 'ja';
 }

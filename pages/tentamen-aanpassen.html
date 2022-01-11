@@ -19,14 +19,15 @@
 
     <div class="card">
 
-        <div class="card-header" tabindex="2">
-            Tentamen toevoegen
+        <div class="card-header" tabindex="1">
+            Tentamen aanpassen
 
-            <a href="home.html" class="btn btn-danger float-right">Terug</a>
-            <a href="importeren.html" class="btn btn-primary float-right">Importeren</a>
+            <knop-component id="terug-knop" text="Terug" class="danger"></knop-component>
         </div>
 
         <div class="card-body">
+
+            <tentamen-aanpassen-component></tentamen-aanpassen-component>
 
         </div>
 
@@ -38,9 +39,22 @@
     if(sessionStorage.getItem("ingelogd") != 'ja'){
         window.location.href = '/index.html';
     }
+
+    function getParam(name){
+        const parts = window.location.href.split('?');
+
+        if (parts.length > 1) {
+            name = encodeURIComponent(name);
+            const params = parts[1].split('&');
+            const found = params.filter(el => (el.split('=')[0] === name) && el);
+            if (found.length) return decodeURIComponent(found[0].split('=')[1]);
+        }
+    }
+
+    document.getElementById('terug-knop').setAttribute('link', 'details.html?id=' + getParam('id'));
 </script>
 
-<script src="../dist/bundle.js"></script>
+<script src="../js/index.js" type="module"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
