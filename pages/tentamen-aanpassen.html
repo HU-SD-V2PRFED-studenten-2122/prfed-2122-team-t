@@ -21,6 +21,8 @@
 
         <div class="card-header" tabindex="1">
             Tentamen aanpassen
+
+            <knop-component id="terug-knop" text="Terug" class="danger"></knop-component>
         </div>
 
         <div class="card-body">
@@ -37,6 +39,19 @@
     if(sessionStorage.getItem("ingelogd") != 'ja'){
         window.location.href = '/index.html';
     }
+
+    function getParam(name){
+        const parts = window.location.href.split('?');
+
+        if (parts.length > 1) {
+            name = encodeURIComponent(name);
+            const params = parts[1].split('&');
+            const found = params.filter(el => (el.split('=')[0] === name) && el);
+            if (found.length) return decodeURIComponent(found[0].split('=')[1]);
+        }
+    }
+
+    document.getElementById('terug-knop').setAttribute('link', 'details.html?id=' + getParam('id'));
 </script>
 
 <script src="../js/index.js" type="module"></script>

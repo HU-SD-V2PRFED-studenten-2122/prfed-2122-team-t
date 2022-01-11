@@ -160,7 +160,6 @@ export class TentamenAanpassen extends LitElement {
                 </div>
 
                 <button @click="${() => this.submitChanges()}" class="btn btn-primary float-right">Opslaan</button>
-                <a href="../../pages/details.html?id=${this.getParam('id')}" class="btn btn-danger float-right">Terug</a>
             </form>
         `;
     }
@@ -203,7 +202,7 @@ export class TentamenAanpassen extends LitElement {
 
             storage.editTentamen(tentamen.id, tentamen);
 
-            alert("Tentamen succesvol gewijzigd")
+            window.location = '/pages/details.html?id=' + tentamen.id;
         }
     }
 

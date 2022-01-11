@@ -80,25 +80,21 @@ class LoginComponent extends LitElement{
                             this.renderRoot.querySelector("#logintext").textContent = 'Succesvol ingelogd!';
                             this.renderRoot.querySelector("#logintext").style.color = 'green';
                             sessionStorage.setItem("ingelogd","ja")
-                            window.location = '/pages/toevoegen.html'
+                            window.location = '/pages/home.html'
                         }     
                         if(gebruiker.email == email && gebruiker.wachtwoord != wachtwoord ){
                             console.log(gebruiker)
                             this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
                             this.renderRoot.querySelector("#logintext").style.color = 'red';
-                        }             
-                      
+                        }
                     })
                 }
                 else{
                     this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet!';
                     this.renderRoot.querySelector("#logintext").style.color = 'red';
                 }
-               
-            }        
-        
+            }
     }
-
 }
 
 customElements.define('login-component', LoginComponent);

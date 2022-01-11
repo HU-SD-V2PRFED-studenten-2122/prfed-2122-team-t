@@ -9,3 +9,4 @@ import * as login from './modules/login.js';
 import * as importeren from './modules/importeren.js';
 import * as controleren from './modules/controleren.js';
 import * as authenticatieknop from './modules/authenticatie-knop.js';
+import * as knop from './modules/knop.js';
