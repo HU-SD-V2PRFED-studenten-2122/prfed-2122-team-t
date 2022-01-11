@@ -1,6 +1,11 @@
 {
   "dependencies": {
-    "lit": "^2.0.2"
+    "bootstrap": "^5.1.3",
+    "bootstrap-table": "^1.19.1",
+    "jquery": "^3.6.0",
+    "lit": "^2.0.2",
+    "popper.js": "^1.16.1",
+    "xlsx": "^0.17.4"
   },
   "name": "prfed-2122-team-t",
   "description": "Een tool voor de Hogeschool Utrecht om een overzicht te creëren van de conversies van de cursussen.",
@@ -11,7 +16,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "web-dev-server --node-resolve --open"
+    "start": "web-dev-server --node-resolve --open",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +32,7 @@
   "homepage": "https://github.com/HU-SD-V2PRFED-studenten-2122/prfed-2122-team-t#readme",
   "devDependencies": {
     "@web/dev-server": "^0.1.29",
+    "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
   }
 }

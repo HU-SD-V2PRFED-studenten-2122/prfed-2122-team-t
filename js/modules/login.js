@@ -1,7 +1,7 @@
-import {html,css,LitElement } from "lit-element";
-import * as storage from "./storage.js";
+import {html,css,LitElement } from "lit";
+import * as storage from "../storage.js";
 
-class loginComponent extends LitElement{
+class LoginComponent extends LitElement{
 
     static get styles(){
         return css`           
@@ -13,28 +13,31 @@ class loginComponent extends LitElement{
 
     render() {
         return html`
-        <div class="card-body">
+            <div class="card-body">
 
-        <div>
-            <h2 class="mb-4 center" tabindex="0">Login</h2>
+                <div>
+                    <h2 class="mb-4 center" tabindex="0">Login</h2>
 
-            <form class="loginform">
-                <div class="form-outline mb-4">
-                    <label for="mailInput" class="form-label" for="typeEmailX-2">Emailadres:</label>
-                    <input id="mailInput" type="email" class="form-control form-control-lg" placeholder="test@hu.nl" tabindex="0"/>
+                    <form class="loginform">
+                        <div class="form-outline mb-4">
+                            <label for="mailInput" class="form-label" for="typeEmailX-2">E-mail adres:</label>
+                            <input id="mailInput" type="email" class="form-control form-control-lg"
+                                   placeholder="test@hu.nl" tabindex="0"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="wwInput" class="form-label" for="typePasswordX-2">Wachtwoord:</label>
+                            <input id="wwInput" type="password" class="form-control form-control-lg"
+                                   placeholder="••••••••••" tabindex="0"/>
+                        </div>
+
+                        <span id="logintext"></span>
+                        <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
+                        <a href="/index.html" class="btn btn-primary float-right" style="margin-right: 10px;"
+                           tabindex="0">Terug</a>
+                    </form>
+
                 </div>
-
-                <div class="form-outline mb-4">
-                    <label for="wwInput" class="form-label" for="typePasswordX-2">Wachtwoord:</label>
-                    <input id="wwInput" type="password" class="form-control form-control-lg" placeholder="••••••••••" tabindex="0" />
-                </div>
-
-                <span id="logintext"></span>
-                <a href="#" class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</a>
-                <a href="/index.html" class="btn btn-primary float-right" style="margin-right: 10px;" tabindex="0">Terug</a>   
-            </form>
-
-        </div>     
         `
     }    
 
@@ -42,7 +45,9 @@ class loginComponent extends LitElement{
         return this;
     }
 
-    login() {
+    login(e) {
+        e.preventDefault();
+
         sessionStorage.setItem('email', this.renderRoot.querySelector("#mailInput").value);
         sessionStorage.setItem('wachtwoord',this.renderRoot.querySelector("#wwInput").value);
 
@@ -75,25 +80,21 @@ class loginComponent extends LitElement{
                             this.renderRoot.querySelector("#logintext").textContent = 'Succesvol ingelogd!';
                             this.renderRoot.querySelector("#logintext").style.color = 'green';
                             sessionStorage.setItem("ingelogd","ja")
-                            window.location = '/testpage.html'
+                            window.location = '/pages/home.html'
                         }     
                         if(gebruiker.email == email && gebruiker.wachtwoord != wachtwoord ){
                             console.log(gebruiker)
                             this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
                             this.renderRoot.querySelector("#logintext").style.color = 'red';
-                        }             
-                      
+                        }
                     })
                 }
                 else{
                     this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet!';
                     this.renderRoot.querySelector("#logintext").style.color = 'red';
                 }
-               
-            }        
-        
+            }
     }
-
 }
 
-customElements.define('login-component',loginComponent);
+customElements.define('login-component', LoginComponent);
