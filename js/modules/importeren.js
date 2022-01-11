@@ -1,8 +1,9 @@
 import {LitElement, html, css} from "lit";
 import * as XLSX from "xlsx";
 import {Tentamen} from "../domein/tentamen";
+import * as storage from '../storage.js';
 
-class ImportButton extends LitElement {
+class Importeren extends LitElement {
 
     render() {
         return html`
@@ -23,6 +24,10 @@ class ImportButton extends LitElement {
         return this;
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+    }
+
     import() {
         let file = document.getElementById('file-input').files[0];
 
@@ -34,12 +39,11 @@ class ImportButton extends LitElement {
         this.toggleMessage(false);
 
         let reader = new FileReader();
-        let self = this;
         reader.onload = function(e) {
             const data = e.target.result;
             const workbook = XLSX.read(data, {type: 'binary'});
 
-            XLSX.utils.sheet_to_json(workbook.Sheets["Sheet"],{header:1}).forEach((row, index) => {
+            XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]],{header:1}).forEach((row, index) => {
                 if (index < 4)
                     return;
 
@@ -68,10 +72,12 @@ class ImportButton extends LitElement {
                 const nieuwTentamen = new Tentamen(opleiding, nieuweCode, nieuweNaam, nieuweToets, nieuweWeging, nieuweEcToets, periode, leider, opmerkingen, null);
                 const oudTentamen = new Tentamen(opleiding, oudeCode, oudeNaam, oudeToets, oudeWeging, oudeEcToets, null, null, null, nieuwTentamen);
 
-                console.log(oudTentamen);
+                storage.saveDraftTentamen(oudTentamen);
             });
         };
         reader.readAsBinaryString(file);
+
+        window.location.href = '/pages/controleren.html';
     }
 
     toggleMessage(bool) {
@@ -83,4 +89,4 @@ class ImportButton extends LitElement {
     }
 }
 
-customElements.define('import-element', ImportButton);
+customElements.define('import-element', Importeren);

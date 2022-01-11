@@ -13,14 +13,16 @@
 
 <div id="background"></div>
 
-<a href="#" class="btn btn-primary" tabindex="1" id="auth-button">Loguit</a>
+<authenticatie-knop-element></authenticatie-knop-element>
 
 <div class="container">
 
     <div class="card">
 
         <div class="card-header" tabindex="2">
-            Conversietool HU
+            Excel sheet importeren
+
+            <a href="toevoegen.html" class="btn btn-danger float-right">Terug</a>
         </div>
 
         <div class="card-body">
@@ -32,6 +34,12 @@
     </div>
 
 </div>
+
+<script>
+    if(sessionStorage.getItem("ingelogd") != 'ja'){
+        window.location.href = '/index.html';
+    }
+</script>
 
 <script src="../dist/bundle.js"></script>
 
