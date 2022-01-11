@@ -43,6 +43,10 @@ class InzichtTabel extends LitElement {
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
         const tentamens = storage.getTentamens();
+
+        if (!tentamens)
+            return;
+
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         for (let index = 0; index < tentamens.length; index++) {
             //insert Row
