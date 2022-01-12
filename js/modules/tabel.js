@@ -16,7 +16,7 @@ class InzichtTabel extends LitElement {
                            placeholder="opleiding/naam/code"
                            aria-label="zoekbalk voor tabel met tentamens">
                 </div>
-                <div style="height: 500px; overflow-y: auto">
+                <div style="height: 500px; overflow-y: auto; box-sizing: border-box;border: solid 1px rgb(217,217,217);background-color: rgba(0,0,0,.04);">
                     <table id="tableData" class="table table-bordered table-striped table-hover"
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
