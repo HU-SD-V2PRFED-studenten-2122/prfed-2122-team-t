@@ -8,7 +8,8 @@ class Knop extends LitElement {
             'link': {attribute: true},
             'text': {attribute: true},
             'class': {attribute: true},
-            'ingelogd': {attribute: true}
+            'ingelogd': {attribute: true},
+            'rechts': {attribute: true}
         };
     }
 
@@ -16,15 +17,17 @@ class Knop extends LitElement {
         super();
 
         this.ingelogd = 'false';
+        this.rechts = 'false';
     }
 
     render() {
+
         if (this.ingelogd == 'true')
             if (!storage.checkLoggedIn())
                 return;
 
         return html`
-            <a href="${this.link}" class="btn btn-${this.class} float-right">${this.text}</a>
+            <a href="${this.link}" class="btn btn-${this.class} ${this.rechts === 'true' ? 'float-right' : ''}">${this.text}</a>
         `;
     }
 
