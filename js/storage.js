@@ -40,7 +40,31 @@ export function saveTentamen(tentamen) {
         tentamens.push(tentamen);
     }
 
+    tentamen.id = uuidv4();
+
     sessionStorage.setItem('tentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Sla een tentamen op in de sessie in het archief
+ * @param {Tentamen} tentamen
+ */
+export function archiveerTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('archief') != null) {
+        getArchief().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    tentamen.id = uuidv4();
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
 }
 
 /**
@@ -90,6 +114,14 @@ export function getTentamens() {
 }
 
 /**
+ * Haal alle tentamens op uit het archief
+ * @returns {array}
+ */
+export function getArchief() {
+    return JSON.parse(sessionStorage.getItem('archief'));
+}
+
+/**
  * Haal alle gebruikers op in de sessie
  * @returns {array}
  */
@@ -113,6 +145,8 @@ export function saveDraftTentamen(tentamen) {
     } else {
         tentamens.push(tentamen);
     }
+
+    tentamen.id = uuidv4();
 
     sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
 }
@@ -156,4 +190,14 @@ export function publishDraftTentamen(tentamen) {
  */
 export function checkLoggedIn(){
     return sessionStorage.getItem("ingelogd") == 'ja';
+}
+
+/**
+ * Genereer een uuid
+ * @returns {string}
+ */
+function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 }
