@@ -9,12 +9,12 @@ class InzichtTabel extends LitElement {
 
             <div class="container">
                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-primary" type="button" @click="${this.search}">Zoeken</button>
+                    </div>
                     <input @keyup="${this.search}" id="myInput" type="text" class="form-control"
                            placeholder="opleiding/naam/code"
                            aria-label="zoekbalk voor tabel met tentamens">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" @click="${this.search}">Zoeken</button>
-                    </div>
                 </div>
                 <div style="height: 500px; overflow-y: auto">
                     <table id="tableData" class="table table-bordered table-striped table-hover"
