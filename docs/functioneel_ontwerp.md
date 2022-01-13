@@ -67,3 +67,11 @@ Op deze pagina kan je een tentamen toevoegen.
 ### Tentamen wijzigen
 Op deze pagina kan je gegevens van een tentamen wijzigen.
 [![Tentamen wijzigen](wireframes/wijzigen.png)](https://xd.adobe.com/view/ac25fdff-4805-466b-b034-09051dde8950-f976/screen/34ba5e29-9f30-41ce-8cdf-1e9803e81cb9)
+
+### Excel bestand importeren
+Op deze pagina kan je een Excel bestand importeren
+[![Excel bestand importeren](wireframes/importeren.PNG)](https://xd.adobe.com/view/5d901b42-0872-49b4-97a5-0475071cdade-08c3/screen/6985a293-1745-4bb3-acd1-a8e0a767a11a)
+
+### Tentamen controleren
+Op deze pagina kan je tentamens controleren die uit een import zijn gekomen
+[![Tentamen controleren](wireframes/controleren.PNG)](https://xd.adobe.com/view/5d901b42-0872-49b4-97a5-0475071cdade-08c3/screen/fcb7c446-f7ae-408e-9e95-052176cddb8f)
