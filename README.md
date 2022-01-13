@@ -4,6 +4,12 @@ Een tool voor de Hogeschool Utrecht om een overzicht te creëren van de conversi
 
 Live applicatie: [http://164.92.208.180:8000/](http://164.92.208.180:8000/)
 
+Login gegevens:
+```
+E-mail: test@gmail.com
+Wachtwoord: test123
+```
+
 ## Setup voor het project:
 
 ```
