@@ -9,27 +9,29 @@ class InzichtTabel extends LitElement {
 
             <div class="container">
                 <div class="input-group mb-3">
-                    <input id="myInput" type="text" class="form-control" placeholder="opleiding/naam/code"
-                           aria-label="zoekbalk voor tabel met tentamens">
-                    <div class="input-group-append">
+                    <div class="input-group-prepend">
                         <button class="btn btn-outline-primary" type="button" @click="${this.search}">Zoeken</button>
                     </div>
+                    <input @keyup="${this.search}" id="myInput" type="text" class="form-control"
+                           placeholder="opleiding/naam/code"
+                           aria-label="zoekbalk voor tabel met tentamens">
                 </div>
-                <div style="height: 500px; overflow-y: auto">
-                <table id="tableData" class="table table-bordered table-striped table-hover" style="position: relative">
-                    <thead style="position: sticky; top: -1px; background: #ffffff;">
-                    <tr>
-                        <th>Opleiding</th>
-                        <th>Code</th>
-                        <th>Naam</th>
-                        <th>Toets</th>
-                        <th>EC</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+                <div style="height: 500px; overflow-y: auto; box-sizing: border-box;border: solid 1px rgb(217,217,217);background-color: rgba(0,0,0,.04);">
+                    <table id="tableData" class="table table-bordered table-striped table-hover"
+                           style="position: relative">
+                        <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
+                        <tr>
+                            <th>Opleiding</th>
+                            <th>Code</th>
+                            <th>Naam</th>
+                            <th>Toets</th>
+                            <th>EC</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         `;
@@ -59,8 +61,8 @@ class InzichtTabel extends LitElement {
                 "<td>" + tentamens[index].ec + "</td>" +
                 "</tr>";
             const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-            element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'")
-            element.setAttribute("style","cursor: pointer")
+            element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'");
+            element.setAttribute("style","cursor: pointer");
         }
     }
 
