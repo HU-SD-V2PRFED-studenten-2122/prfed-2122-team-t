@@ -10,6 +10,8 @@ E-mail: test@gmail.com
 Wachtwoord: test123
 ```
 
+Met het Conversies.xlsx bestand kan het importeren getest worden.
+
 ## Setup voor het project:
 
 ```
