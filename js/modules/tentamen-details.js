@@ -165,7 +165,7 @@ export class TentamenDetailsButtons extends LitElement {
 
     render() {
         if (!storage.checkLoggedIn())
-            return html`<a href="../../pages/home.html" class="btn btn-primary float-right">Terug</a>`;
+            return;
 
         return html`
             <a href="../../pages/tentamen-aanpassen.html?id=${this.id}" class="btn btn-primary float-right">Wijzigen</a>
