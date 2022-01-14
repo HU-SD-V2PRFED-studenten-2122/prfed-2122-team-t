@@ -28,7 +28,7 @@ class AuthenticatieKnop extends LitElement {
 
     redirect() {
         if (storage.checkLoggedIn()) {
-            window.location.href = '/index.html';
+            window.location.href = '/pages/home.html';
             sessionStorage.setItem('ingelogd','nee');
         } else {
             window.location.href = '/pages/login.html';
