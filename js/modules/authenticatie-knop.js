@@ -5,7 +5,8 @@ class AuthenticatieKnop extends LitElement {
 
     render() {
         return html`
-            <a class="btn btn-primary" tabindex="1" id="auth-button" @click="${this.redirect}"></a>
+            <a class="btn btn-primary" tabindex="0" id="auth-button" @click="${this.redirect}"></a>
+            <a href="../../pages/home.html" class="btn btn-primary" id="home-button" tabindex="0">Home</a>
         `;
     }
 
@@ -27,7 +28,7 @@ class AuthenticatieKnop extends LitElement {
 
     redirect() {
         if (storage.checkLoggedIn()) {
-            window.location.href = '/index.html';
+            window.location.href = '/pages/home.html';
             sessionStorage.setItem('ingelogd','nee');
         } else {
             window.location.href = '/pages/login.html';

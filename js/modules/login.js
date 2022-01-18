@@ -20,7 +20,7 @@ class LoginComponent extends LitElement{
 
                     <form class="loginform">
                         <div class="form-outline mb-4">
-                            <label for="mailInput" class="form-label" for="typeEmailX-2">E-mail adres:</label>
+                            <label for="mailInput" class="form-label" for="typeEmailX-2">E-mailadres:</label>
                             <input id="mailInput" type="email" class="form-control form-control-lg"
                                    placeholder="test@hu.nl" tabindex="0"/>
                         </div>
@@ -33,7 +33,7 @@ class LoginComponent extends LitElement{
 
                         <span id="logintext"></span>
                         <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
-                        <a href="/index.html" class="btn btn-primary float-right" style="margin-right: 10px;"
+                        <a href="/pages/home.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
                     </form>
 
@@ -76,29 +76,21 @@ class LoginComponent extends LitElement{
                 if(emails.includes(email)){                   
                     storage.getGebruikers().filter(gebruiker => {  
                         if(gebruiker.email == email && gebruiker.wachtwoord == wachtwoord ){
-                            console.log(gebruiker)
-                            this.renderRoot.querySelector("#logintext").textContent = 'Succesvol ingelogd!';
-                            this.renderRoot.querySelector("#logintext").style.color = 'green';
                             sessionStorage.setItem("ingelogd","ja")
-                            window.location = '/pages/toevoegen.html'
+                            window.location = '/pages/home.html'
                         }     
                         if(gebruiker.email == email && gebruiker.wachtwoord != wachtwoord ){
-                            console.log(gebruiker)
                             this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
                             this.renderRoot.querySelector("#logintext").style.color = 'red';
-                        }             
-                      
+                        }
                     })
                 }
                 else{
                     this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet!';
                     this.renderRoot.querySelector("#logintext").style.color = 'red';
                 }
-               
-            }        
-        
+            }
     }
-
 }
 
 customElements.define('login-component', LoginComponent);

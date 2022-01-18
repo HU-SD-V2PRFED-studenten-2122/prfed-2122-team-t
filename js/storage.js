@@ -7,6 +7,21 @@ let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordina
 let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
 sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
 
+const nieuwTentamen1 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Schriftelijke tentamen', 50, 2.5, 'A,B', 'andre.ras@hu.nl', null, null);
+const oudTentamen1 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Schriftelijke tentamen', 50, 2.5, null, null, null, nieuwTentamen1);
+
+const nieuwTentamen2 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Onderzoeksrapport', 50, 2.5, 'A,B', 'andre.ras@hu.nl', null, null);
+const oudTentamen2 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Onderzoeksrapport', 50, 2.5, null, null, null, nieuwTentamen2);
+
+const nieuwTentamen3 = new Tentamen('BKMER', 'MBME-VAFSTUD-17', 'Afstuderen MER voltijd', 'Scriptie/verslag', 60, 18, 'Jaar', 'Irene.vanderMarel-Koning@hu.nl', null, null);
+const oudTentamen3 = new Tentamen('BKMER', 'MBBU-H-AFSBDK-20', 'Afstudeerproject', 'Gehele cursus', 100, 30, null, null, null, nieuwTentamen3);
+
+if (sessionStorage.getItem('tentamens') == null) {
+    saveTentamen(oudTentamen1);
+    saveTentamen(oudTentamen2);
+    saveTentamen(oudTentamen3);
+}
+
 /**
  *
  * @param id
@@ -40,7 +55,31 @@ export function saveTentamen(tentamen) {
         tentamens.push(tentamen);
     }
 
+    tentamen.id = uuidv4();
+
     sessionStorage.setItem('tentamens', JSON.stringify(tentamens));
+}
+
+/**
+ * Sla een tentamen op in de sessie in het archief
+ * @param {Tentamen} tentamen
+ */
+export function archiveerTentamen(tentamen) {
+    let tentamens = [];
+
+    if (sessionStorage.getItem('archief') != null) {
+        getArchief().forEach(function (element) {
+            tentamens.push(element);
+        });
+
+        tentamens.push(tentamen);
+    } else {
+        tentamens.push(tentamen);
+    }
+
+    tentamen.id = uuidv4();
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
 }
 
 /**
@@ -90,6 +129,14 @@ export function getTentamens() {
 }
 
 /**
+ * Haal alle tentamens op uit het archief
+ * @returns {array}
+ */
+export function getArchief() {
+    return JSON.parse(sessionStorage.getItem('archief'));
+}
+
+/**
  * Haal alle gebruikers op in de sessie
  * @returns {array}
  */
@@ -113,6 +160,8 @@ export function saveDraftTentamen(tentamen) {
     } else {
         tentamens.push(tentamen);
     }
+
+    tentamen.id = uuidv4();
 
     sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
 }
@@ -156,4 +205,14 @@ export function publishDraftTentamen(tentamen) {
  */
 export function checkLoggedIn(){
     return sessionStorage.getItem("ingelogd") == 'ja';
+}
+
+/**
+ * Genereer een uuid
+ * @returns {string}
+ */
+function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 }
