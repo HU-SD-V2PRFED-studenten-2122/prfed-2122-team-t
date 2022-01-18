@@ -7,6 +7,21 @@ let gebruiker2 = new Gebruiker('hallo@gmail.com', 'test123', 'onderwijs_coordina
 let gebruiker3 = new Gebruiker('doei@gmail.com', 'test123', 'onderwijs_coordinator');
 sessionStorage.setItem('gebruikers', JSON.stringify([gebruiker,gebruiker2,gebruiker3]));
 
+const nieuwTentamen1 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Schriftelijke tentamen', 50, 2.5, 'A,B', 'andre.ras@hu.nl', null, null);
+const oudTentamen1 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Schriftelijke tentamen', 50, 2.5, null, null, null, nieuwTentamen1);
+
+const nieuwTentamen2 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Onderzoeksrapport', 50, 2.5, 'A,B', 'andre.ras@hu.nl', null, null);
+const oudTentamen2 = new Tentamen('BKMER', 'MBME-OND2-17', 'Onderzoek 2', 'Onderzoeksrapport', 50, 2.5, null, null, null, nieuwTentamen2);
+
+const nieuwTentamen3 = new Tentamen('BKMER', 'MBME-VAFSTUD-17', 'Afstuderen MER voltijd', 'Scriptie/verslag', 60, 18, 'Jaar', 'Irene.vanderMarel-Koning@hu.nl', null, null);
+const oudTentamen3 = new Tentamen('BKMER', 'MBBU-H-AFSBDK-20', 'Afstudeerproject', 'Gehele cursus', 100, 30, null, null, null, nieuwTentamen3);
+
+if (sessionStorage.getItem('tentamens') == null) {
+    saveTentamen(oudTentamen1);
+    saveTentamen(oudTentamen2);
+    saveTentamen(oudTentamen3);
+}
+
 /**
  *
  * @param id
