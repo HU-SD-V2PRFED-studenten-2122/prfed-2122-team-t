@@ -17,9 +17,11 @@ const nieuwTentamen3 = new Tentamen('BKMER', 'MBME-VAFSTUD-17', 'Afstuderen MER 
 const oudTentamen3 = new Tentamen('BKMER', 'MBBU-H-AFSBDK-20', 'Afstudeerproject', 'Gehele cursus', 100, 30, null, null, null, nieuwTentamen3);
 
 if (sessionStorage.getItem('tentamens') == null) {
-    saveTentamen(oudTentamen1);
-    saveTentamen(oudTentamen2);
-    saveTentamen(oudTentamen3);
+    for (let i = 0; i < 5; i++) {
+        saveTentamen(oudTentamen1);
+        saveTentamen(oudTentamen2);
+        saveTentamen(oudTentamen3);
+    }
 }
 
 /**
