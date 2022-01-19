@@ -85,10 +85,6 @@ class LoginComponent extends LitElement{
                         }
                     })
                 }
-                else{
-                    this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet!';
-                    this.renderRoot.querySelector("#logintext").style.color = 'red';
-                }
             }
     }
 }
