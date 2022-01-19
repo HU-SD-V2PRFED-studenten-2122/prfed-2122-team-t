@@ -7,6 +7,7 @@ class AuthenticatieKnop extends LitElement {
         return html`
             <a class="btn btn-primary" tabindex="0" id="auth-button" @click="${this.redirect}"></a>
             <a href="../../pages/home.html" class="btn btn-primary" id="home-button" tabindex="0">Home</a>
+            <a href="../../index.html" class="btn btn-info" id="info-button" aria-label="Informatie pagina" tabindex="0">?</a>
         `;
     }
 

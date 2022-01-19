@@ -1,15 +1,15 @@
-import {html,css,LitElement } from "lit";
+import {html, css, LitElement} from "lit";
 import * as storage from "../storage.js";
 
-class LoginComponent extends LitElement{
+class LoginComponent extends LitElement {
 
-    static get styles(){
+    static get styles() {
         return css`           
         .center {
             text-align: center;
         }        
         `
-    }    
+    }
 
     render() {
         return html`
@@ -31,7 +31,7 @@ class LoginComponent extends LitElement{
                                    placeholder="••••••••••" tabindex="0"/>
                         </div>
 
-                        <span id="logintext"></span>
+                        <span role="alert" style="color: red" id="logintext"></span>
                         <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
                         <a href="/pages/home.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
@@ -39,53 +39,45 @@ class LoginComponent extends LitElement{
 
                 </div>
         `
-    }    
+    }
 
-    createRenderRoot(){
+    createRenderRoot() {
         return this;
     }
 
     login(e) {
         e.preventDefault();
 
-        sessionStorage.setItem('email', this.renderRoot.querySelector("#mailInput").value);
-        sessionStorage.setItem('wachtwoord',this.renderRoot.querySelector("#wwInput").value);
+        this.renderRoot.querySelector("#logintext").textContent = '';
 
-        let email = sessionStorage.getItem('email');
-        let wachtwoord = sessionStorage.getItem('wachtwoord');
-    
-        let emailInput = this.renderRoot.querySelector("#mailInput");
-        let wachtwoordInput = this.renderRoot.querySelector("#wwInput");
+        let email = this.renderRoot.querySelector("#mailInput").value;
+        let wachtwoord = this.renderRoot.querySelector("#wwInput").value;
 
-        var emails = storage.getGebruikers().map(gebruiker => gebruiker.email)        
-        
-            if (emailInput.value == '') {
-                this.renderRoot.querySelector("#logintext").textContent = 'Email is leeg.'
-                this.renderRoot.querySelector("#logintext").style.color = 'red';
-            }
-            if (wachtwoordInput.value == '') {
-                this.renderRoot.querySelector("#logintext").textContent = 'Wachtwoord is leeg.'
-                this.renderRoot.querySelector("#logintext").style.color = 'red';
-            }
-            if (wachtwoordInput.value == '' && emailInput.value == '') {
-                this.renderRoot.querySelector("#logintext").textContent = 'Email en wachtwoord zijn leeg.'
-                this.renderRoot.querySelector("#logintext").style.color = 'red';
-            }
+        const emails = storage.getGebruikers().map(gebruiker => gebruiker.email);
 
-            if(emailInput.value != '' && wachtwoordInput.value != '') {
-                if(emails.includes(email)){                   
-                    storage.getGebruikers().filter(gebruiker => {  
-                        if(gebruiker.email == email && gebruiker.wachtwoord == wachtwoord ){
-                            sessionStorage.setItem("ingelogd","ja")
-                            window.location = '/pages/home.html'
-                        }     
-                        if(gebruiker.email == email && gebruiker.wachtwoord != wachtwoord ){
-                            this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
-                            this.renderRoot.querySelector("#logintext").style.color = 'red';
-                        }
-                    })
-                }
+        if (email === '') {
+            this.renderRoot.querySelector("#logintext").textContent = 'E-mail is leeg.';
+            return;
+        }
+
+        if (wachtwoord === '') {
+            this.renderRoot.querySelector("#logintext").textContent = 'Wachtwoord is leeg.';
+            return;
+        }
+
+        if (email !== '' && wachtwoord !== '') {
+            if (emails.includes(email)) {
+                storage.getGebruikers().filter(gebruiker => {
+                    if (gebruiker.email === email && gebruiker.wachtwoord === wachtwoord) {
+                        sessionStorage.setItem("ingelogd", "ja");
+                        window.location = '/pages/home.html';
+                    }
+                })
             }
+            this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
+        } else {
+            this.renderRoot.querySelector("#logintext").textContent = 'E-mail en wachtwoord zijn leeg.';
+        }
     }
 }
 

@@ -11,7 +11,7 @@ class InzichtTabel extends LitElement {
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-primary" type="button" @click="${this.fillTable}">Zoeken</button>
                     </div>
-                    <input @keyup="${this.fillTable}" id="myInput" type="text" class="form-control"
+                    <input @keyup="${this.fillTable}" id="searchInput" type="text" class="form-control"
                            placeholder="opleiding/naam/code"
                            aria-label="zoekbalk voor tabel met tentamens">
                 </div>
@@ -47,7 +47,7 @@ class InzichtTabel extends LitElement {
     }
 
     fillTable() {
-        const search = document.getElementById("myInput").value.toLowerCase();
+        const search = document.getElementById("searchInput").value.toLowerCase();
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         table.innerHTML = ""
 
@@ -67,8 +67,9 @@ class InzichtTabel extends LitElement {
                     "</tr>";
 
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "'")
-                element.setAttribute("style", "cursor: pointer")
+                element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "'");
+                element.setAttribute("style", "cursor: pointer");
+                element.setAttribute("aria-label", "Link");
             }
         }
     }
