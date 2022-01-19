@@ -1,5 +1,4 @@
 import {LitElement, html, css} from "lit";
-import {Tentamen} from "../domein/tentamen";
 import * as storage from "../storage.js";
 
 class InzichtTabel extends LitElement {
@@ -20,13 +19,13 @@ class InzichtTabel extends LitElement {
                     <table id="tableData" class="table table-bordered table-striped table-hover"
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
-                        <tr>
-                            <th>Opleiding</th>
-                            <th>Code</th>
-                            <th>Naam</th>
-                            <th>Toets</th>
-                            <th>EC</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">Opleiding</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Naam</th>
+                                <th scope="col">Toets</th>
+                                <th scope="col">EC</th>
+                            </tr>
                         </thead>
                         <tbody>
 
@@ -54,7 +53,7 @@ class InzichtTabel extends LitElement {
             //insert Row
             table.insertRow().innerHTML =
                 "<tr>" +
-                "<td>" + tentamens[index].opleiding + "</td>" +
+                "<th scope='row'>" + tentamens[index].opleiding + "</th>" +
                 "<td>" + tentamens[index].code + "</td>" +
                 "<td>" + tentamens[index].naam + "</td>" +
                 "<td>" + tentamens[index].toetsvorm + "</td>" +
@@ -76,7 +75,7 @@ class InzichtTabel extends LitElement {
                 .includes(search)||tentamens[index].naam.toLowerCase().includes(search)){
                 table.insertRow().innerHTML =
                     "<tr>" +
-                    "<td>" + tentamens[index].opleiding + "</td>" +
+                    "<th scope='row'>" + tentamens[index].opleiding + "</th>" +
                     "<td>" + tentamens[index].code + "</td>" +
                     "<td>" + tentamens[index].naam + "</td>" +
                     "<td>" + tentamens[index].toetsvorm + "</td>" +
@@ -87,7 +86,6 @@ class InzichtTabel extends LitElement {
                 element.setAttribute("style","cursor: pointer")
             }
         }
-
     }
 }
 
