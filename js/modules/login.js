@@ -80,13 +80,13 @@ class LoginComponent extends LitElement{
                             window.location = '/pages/home.html'
                         }     
                         if(gebruiker.email == email && gebruiker.wachtwoord != wachtwoord ){
-                            this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
+                            this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet.';
                             this.renderRoot.querySelector("#logintext").style.color = 'red';
                         }
                     })
                 }
                 else{
-                    this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet!';
+                    this.renderRoot.querySelector("#logintext").textContent = 'Account bestaat niet.';
                     this.renderRoot.querySelector("#logintext").style.color = 'red';
                 }
             }
