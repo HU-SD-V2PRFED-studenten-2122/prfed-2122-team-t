@@ -7,7 +7,7 @@ class Importeren extends LitElement {
 
     render() {
         return html`
-            <div class="alert alert-danger" id="message" style="display: none">
+            <div role="alert" class="alert alert-danger" id="message" style="display: none">
                 Voer een file in
             </div>
             

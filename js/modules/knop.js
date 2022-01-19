@@ -22,12 +22,13 @@ class Knop extends LitElement {
 
     render() {
 
-        if (this.ingelogd == 'true')
+        if (this.ingelogd === 'true')
             if (!storage.checkLoggedIn())
                 return;
 
         return html`
-            <a href="${this.link}" class="btn btn-${this.class} ${this.rechts === 'true' ? 'float-right' : ''}">${this.text}</a>
+            <a href="${this.link}"
+               class="btn btn-${this.class} ${this.rechts === 'true' ? 'float-right' : ''}">${this.text}</a>
         `;
     }
 
