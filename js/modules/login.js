@@ -32,6 +32,7 @@ class LoginComponent extends LitElement {
                         </div>
 
                         <span role="alert" style="color: red" id="logintext"></span>
+
                         <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
                         <a href="/pages/home.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
@@ -64,6 +65,7 @@ class LoginComponent extends LitElement {
             this.renderRoot.querySelector("#logintext").textContent = 'Wachtwoord is leeg.';
             return;
         }
+
 
         if (email !== '' && wachtwoord !== '') {
             if (emails.includes(email)) {
