@@ -31,7 +31,7 @@ class LoginComponent extends LitElement{
                                    placeholder="••••••••••" tabindex="0"/>
                         </div>
 
-                        <span id="logintext"></span>
+                        <span role="alert" id="logintext"></span>
                         <button class="btn btn-primary float-right" @click="${this.login}" tabindex="0">Login</button>
                         <a href="/pages/home.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
