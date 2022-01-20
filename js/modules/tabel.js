@@ -86,7 +86,13 @@ class InzichtTabel extends LitElement {
                     "</tr>";
 
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "&archief=" + this.archief + "'");
+
+                if (this.archief === 'false') {
+                    element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "'");
+                } else {
+                    element.setAttribute("onclick", "location.href='dearchiveer.html?id=" + tentamens[i].id + "'");
+                }
+
                 element.setAttribute("style", "cursor: pointer");
                 element.setAttribute("aria-label", "Link");
             }
