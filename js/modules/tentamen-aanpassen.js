@@ -6,6 +6,7 @@ export class TentamenAanpassen extends LitElement {
 
     static get properties() {
         return {
+            archief:{type: String},
             tentamen: {type: Tentamen}
         }
     }
@@ -192,14 +193,13 @@ export class TentamenAanpassen extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-
-        this.tentamen = storage.findTentamenById(this.getParam('id'));
+        this.setTentamen();
     }
 
     submitChanges(event) {
         event.preventDefault();
 
-        const tentamen = storage.findTentamenById(this.getParam('id'));
+        const tentamen = this.getTentamen();
 
         tentamen.opleiding = document.getElementById('opleiding-oud').value;
         tentamen.naam = document.getElementById('naam-oud').value;
@@ -219,10 +219,25 @@ export class TentamenAanpassen extends LitElement {
         tentamen.nieuwTentamen.opmerking = document.getElementById('opmerking').value;
         tentamen.nieuwTentamen.leider = document.getElementById('leider').value;
 
-        storage.editTentamen(tentamen.id, tentamen);
+        if (this.archief=='true'){
+            storage.editArchiefTentamen(tentamen.id, tentamen);
+            window.location = '/pages/dearchiveer.html?id=' + tentamen.id;
+        }else {
+            storage.editTentamen(tentamen.id, tentamen);
+            window.location = '/pages/details.html?id=' + tentamen.id;
+        }
+    }
 
-        window.location = '/pages/details.html?id=' + tentamen.id;
+    setTentamen(){
+        if (this.archief=='true'){
+            this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
+        }else {
+            this.tentamen = storage.findTentamenById(this.getParam('id'));
+        }
+    }
 
+    getTentamen(){
+        return this.tentamen;
     }
 
     getParam(name) {
