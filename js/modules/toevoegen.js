@@ -15,53 +15,58 @@ export class TentamenToevoegen extends LitElement {
             <form @submit="${this.submit}">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Oud Tentamen</p>
+                        <p style="font-weight: bold">Oud Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding">Opleiding:</label>
+                            <label for="opleiding-oud" class="col-4 col-form-label"
+                                   aria-label="Oude opleiding">Opleiding: *</label>
                             <div class="col-8">
                                 <input id="opleiding-oud" name="opleiding-oud" placeholder="Opleiding" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code">Code:</label>
+                            <label for="code-oud" class="col-4 col-form-label"
+                                   aria-label="Oude code">Code: *</label>
                             <div class="col-8">
                                 <input id="code-oud" name="code-oud" placeholder="Code" type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam">Naam:</label>
+                            <label for="naam-oud" class="col-4 col-form-label"
+                                   aria-label="Oude naam">Naam: *</label>
                             <div class="col-8">
                                 <input id="naam-oud" name="naam-oud" placeholder="Naam" type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-oud" class="col-4 col-form-label"
+                                   aria-label="Oude toetsvorm">Toetsvorm: *</label>
                             <div class="col-8">
                                 <input id="toetsvorm-oud" name="toetsvorm-oud" placeholder="Toetsvorm" type="text"
-                                       class="form-control" required="required">
+                                       class="form-control" required="required"  aria-required="true">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging">Weging:</label>
+                                    <label for="weging-oud" class="col-8 col-form-label"
+                                           aria-label="Oude weging">Weging: *</label>
                                     <div class="col-4">
                                         <input id="weging-oud" name="weging-oud" class="form-control"
-                                               required="required" type="number" step="0.1" value="1">
+                                               required="required" type="number" step="0.1" value="1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC">EC:</label>
+                                    <label for="ec-oud" class="col-8 col-form-label"
+                                           aria-label="Oude EC">EC: *</label>
                                     <div class="col-4">
                                         <input id="ec-oud" name="ec-oud" class="form-control" required="required"
-                                               type="number" step="0.1" value="1">
+                                               type="number" step="0.1" value="1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
@@ -70,57 +75,56 @@ export class TentamenToevoegen extends LitElement {
                     </div>
 
                     <div class="col-md-6">
-                        <p>Nieuw Tentamen</p>
+                        <p style="font-weight: bold">Nieuw Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding">Opleiding:</label>
+                            <label for="opleiding-nieuw" class="col-4 col-form-label"
+                                   aria-label="Nieuwe opleiding">Opleiding: *</label>
                             <div class="col-8">
                                 <input id="opleiding-nieuw" name="opleiding-nieuw" placeholder="Opleiding" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code">Code:</label>
+                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code ">Code: *</label>
                             <div class="col-8">
                                 <input id="code-nieuw" name="code-nieuw" placeholder="Code" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam">Naam:</label>
+                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam ">Naam: *</label>
                             <div class="col-8">
                                 <input id="naam-nieuw" name="naam-nieuw" placeholder="Naam" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm: *</label>
                             <div class="col-8">
                                 <input id="toetsvorm-nieuw" name="toetsvorm-nieuw" placeholder="Toetsvorm" type="text"
-                                       class="form-control" required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging:</label>
+                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging: *</label>
                                     <div class="col-4">
                                         <input id="weging-nieuw" name="weging-nieuw" class="form-control"
-                                               required="required" type="number" step="0.1" value="1">
+                                               required="required" type="number" step="0.1" value="1"
+                                               aria-required="true">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label for="ec-nieuw" class="col-8 col-form-label"
-                                           aria-label="Nieuwe ec">EC:</label>
+                                           aria-label="Nieuwe ec">EC: *</label>
                                     <div class="col-4">
                                         <input id="ec-nieuw" name="ec-nieuw" class="form-control" required="required"
-                                               type="number" step="0.1" value="1">
+                                               type="number" step="0.1" value="1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
@@ -133,18 +137,17 @@ export class TentamenToevoegen extends LitElement {
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="periode" class="col-4 col-form-label">Periode:</label>
+                            <label for="periode" class="col-4 col-form-label">Periode: *</label>
                             <div class="col-8">
                                 <input id="periode" name="periode" placeholder="Periode" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="leider" class="col-4 col-form-label">Leider:</label>
+                            <label for="leider" class="col-4 col-form-label">Leider: *</label>
                             <div class="col-8">
                                 <input id="leider" name="leider" placeholder="Leider" type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                     </div>
