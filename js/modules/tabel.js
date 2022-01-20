@@ -3,6 +3,18 @@ import * as storage from "../storage.js";
 
 class InzichtTabel extends LitElement {
 
+    static get properties() {
+        return {
+            'archief': {attribute: true},
+        };
+    }
+
+    constructor() {
+        super();
+
+        this.archief = 'false';
+    }
+
     render() {
         return html`
 
@@ -51,7 +63,14 @@ class InzichtTabel extends LitElement {
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         table.innerHTML = ""
 
-        const tentamens = storage.getTentamens();
+        let tentamens;
+
+        if (this.archief === 'false') {
+            tentamens = storage.getTentamens();
+        } else {
+            tentamens = storage.getArchief();
+        }
+
         for (let i = 0; i < tentamens.length; i++) {
             if (tentamens[i].opleiding.toLowerCase().includes(search) ||
                 tentamens[i].code.toLowerCase().includes(search) ||
@@ -67,7 +86,7 @@ class InzichtTabel extends LitElement {
                     "</tr>";
 
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "'");
+                element.setAttribute("onclick", "location.href='details.html?id=" + tentamens[i].id + "&archief=" + this.archief + "'");
                 element.setAttribute("style", "cursor: pointer");
                 element.setAttribute("aria-label", "Link");
             }
