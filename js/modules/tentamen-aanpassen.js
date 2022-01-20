@@ -219,11 +219,9 @@ export class TentamenAanpassen extends LitElement {
         tentamen.nieuwTentamen.opmerking = document.getElementById('opmerking').value;
         tentamen.nieuwTentamen.leider = document.getElementById('leider').value;
 
-
         if (this.archief=='true'){
             storage.editArchiefTentamen(tentamen.id, tentamen);
             window.location = '/pages/dearchiveer.html?id=' + tentamen.id;
-
         }else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/details.html?id=' + tentamen.id;
