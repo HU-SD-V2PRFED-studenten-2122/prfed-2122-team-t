@@ -139,6 +139,34 @@ export function getArchief() {
 }
 
 /**
+ * Verwijder een tentamen van de archief
+ * @param {number} id
+ */
+export function verwijderVanArchief(id){
+    let tentamenArchief = [];
+
+    getArchief().forEach(function (geArchiveerdeTentamen) {
+        if (geArchiveerdeTentamen.id != id) {
+            tentamenArchief.push(geArchiveerdeTentamen);
+        }
+    });
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamenArchief));
+
+}
+
+/**
+ * Verwijder een tentamen van de archief en sla het weer op in de zichtbare tentamen lijst.
+ * @param {Tentamen} tentamen
+ */
+export function deArchifeerTentamen(tentamen){
+    verwijderVanArchief(tentamen.id);
+    saveTentamen(tentamen);
+}
+
+
+
+/**
  * Haal alle gebruikers op in de sessie
  * @returns {array}
  */
