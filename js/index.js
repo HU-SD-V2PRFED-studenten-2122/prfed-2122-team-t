@@ -11,3 +11,4 @@ import * as controleren from './modules/controleren.js';
 import * as authenticatieknop from './modules/authenticatie-knop.js';
 import * as knop from './modules/knop.js';
 import * as tentamentoevoegen from './modules/toevoegen.js';
+import * as dearchiveerknop from './modules/dearchiveer-knop.js'

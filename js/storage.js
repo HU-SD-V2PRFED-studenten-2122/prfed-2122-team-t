@@ -41,6 +41,22 @@ export function findTentamenById(id) {
 }
 
 /**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findArchiefTentamenById(id) {
+    if (sessionStorage.getItem('archief') != null) {
+        for (let i = 0; i < getArchief().length; i++) {
+            if (getArchief()[i].id == id)
+                return getArchief()[i];
+        }
+    }
+
+    return null;
+}
+
+/**
  * Sla een tentamen op in de sessie
  * @param {Tentamen} tentamen
  */
@@ -107,6 +123,28 @@ export function editTentamen(id, tentamen) {
 }
 
 /**
+ * Wijzig een archief tentamen
+ * @param {number} id
+ * @param {Tentamen} tentamen
+ */
+export function editArchiefTentamen(id, tentamen) {
+    let tentamens = [];
+
+    getArchief().forEach(function (element) {
+        tentamens.push(element);
+    });
+
+    for (let i = 0; i < tentamens.length; i++) {
+        if (tentamens[i].id == id) {
+            tentamen.id = id;
+            tentamens[i] = tentamen;
+        }
+    }
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
+}
+
+/**
  * Verwijder een tentamen uit de sessie
  * @param {number} id
  */
@@ -144,12 +182,14 @@ export function getArchief() {
  */
 export function verwijderVanArchief(id){
     let tentamenArchief = [];
-
     getArchief().forEach(function (geArchiveerdeTentamen) {
+
         if (geArchiveerdeTentamen.id != id) {
             tentamenArchief.push(geArchiveerdeTentamen);
         }
     });
+
+    console.log(tentamenArchief)
 
     sessionStorage.setItem('archief', JSON.stringify(tentamenArchief));
 
