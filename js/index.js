@@ -10,4 +10,6 @@ import * as importeren from './modules/importeren.js';
 import * as controleren from './modules/controleren.js';
 import * as authenticatieknop from './modules/authenticatie-knop.js';
 import * as knop from './modules/knop.js';
-import * as tentamentoevoegen from './modules/toevoegen.js';
+import * as tentamentoevoegen from './modules/tentamen-toevoegen.js';
+import * as dearchiveerknop from './modules/tentamen-archief.js';
+import * as verwijderknop from './modules/tentamen-archief.js';

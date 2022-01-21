@@ -6,6 +6,7 @@ export class TentamenAanpassen extends LitElement {
 
     static get properties() {
         return {
+            archief:{type: String},
             tentamen: {type: Tentamen}
         }
     }
@@ -15,59 +16,61 @@ export class TentamenAanpassen extends LitElement {
             <form @submit="${this.submitChanges}">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Oud Tentamen</p>
+                        <p style="font-weight: bold">Oud Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding">Opleiding:</label>
+                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding">Opleiding:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.opleiding}" id="opleiding-oud" name="opleiding-oud"
                                        placeholder="Opleiding" type="text"
-                                       class="form-control"
-                                       required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code">Code:</label>
+                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code">Code: *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.code}" id="code-oud" name="code-oud" placeholder="Code"
                                        type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam">Naam:</label>
+                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam">Naam: *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.naam}" id="naam-oud" name="naam-oud" placeholder="Naam"
                                        type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm">Toetsvorm:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.toetsvorm}" id="toetsvorm-oud" name="toetsvorm-oud"
                                        placeholder="Toetsvorm" type="text"
-                                       class="form-control" required="required">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging">Weging:</label>
+                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging">Weging:
+                                        *</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.weging}" id="weging-oud" name="weging-oud"
                                                class="form-control"
-                                               required="required" type="number" step="0.1">
+                                               required="required" type="number" step="0.1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC">EC:</label>
+                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC">EC: *</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.ec}" id="ec-oud" name="ec-oud"
                                                class="form-control" required="required"
-                                               type="number" step="0.1">
+                                               type="number" step="0.1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
@@ -76,63 +79,68 @@ export class TentamenAanpassen extends LitElement {
                     </div>
 
                     <div class="col-md-6">
-                        <p>Nieuw Tentamen</p>
+                        <p style="font-weight: bold">Nieuw Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding">Opleiding:</label>
+                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding">Opleiding:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.opleiding}" id="opleiding-nieuw"
                                        name="opleiding-nieuw" placeholder="Opleiding" type="text"
                                        class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code">Code:</label>
+                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code">Code:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.code}" id="code-nieuw" name="code-nieuw"
                                        placeholder="Code" type="text"
                                        class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam">Naam:</label>
+                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam">Naam:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.naam}" id="naam-nieuw" name="naam-nieuw"
                                        placeholder="Naam" type="text"
                                        class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm:
+                                *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.toetsvorm}" id="toetsvorm-nieuw"
                                        name="toetsvorm-nieuw" placeholder="Toetsvorm" type="text"
-                                       class="form-control">
+                                       class="form-control aria-required=" true"">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging:</label>
+                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging:
+                                        *</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.nieuwTentamen.weging}" id="weging-nieuw"
                                                name="weging-nieuw" class="form-control"
-                                               required="required" type="number" step="0.1">
+                                               required="required" type="number" step="0.1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label for="ec-nieuw" class="col-8 col-form-label"
-                                           aria-label="Nieuwe ec">EC:</label>
+                                           aria-label="Nieuwe ec">EC: *</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.nieuwTentamen.ec}" id="ec-nieuw" name="ec-nieuw"
                                                class="form-control" required="required"
-                                               type="number" step="0.1">
+                                               type="number" step="0.1" aria-required="true">
                                     </div>
                                 </div>
                             </div>
@@ -145,20 +153,20 @@ export class TentamenAanpassen extends LitElement {
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="periode" class="col-4 col-form-label">Periode:</label>
+                            <label for="periode" class="col-4 col-form-label">Periode: *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.periode}" id="periode" name="periode"
                                        placeholder="Periode" type="text"
                                        class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="leider" class="col-4 col-form-label">Leider:</label>
+                            <label for="leider" class="col-4 col-form-label">Leider: *</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.leider}" id="leider" name="leider"
                                        placeholder="Leider" type="text" class="form-control"
-                                       required="required">
+                                       required="required" aria-required="true">
                             </div>
                         </div>
                     </div>
@@ -185,14 +193,13 @@ export class TentamenAanpassen extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-
-        this.tentamen = storage.findTentamenById(this.getParam('id'));
+        this.setTentamen();
     }
 
     submitChanges(event) {
         event.preventDefault();
 
-        const tentamen = storage.findTentamenById(this.getParam('id'));
+        const tentamen = this.getTentamen();
 
         tentamen.opleiding = document.getElementById('opleiding-oud').value;
         tentamen.naam = document.getElementById('naam-oud').value;
@@ -212,10 +219,25 @@ export class TentamenAanpassen extends LitElement {
         tentamen.nieuwTentamen.opmerking = document.getElementById('opmerking').value;
         tentamen.nieuwTentamen.leider = document.getElementById('leider').value;
 
-        storage.editTentamen(tentamen.id, tentamen);
+        if (this.archief=='true'){
+            storage.editArchiefTentamen(tentamen.id, tentamen);
+            window.location = '/pages/tentamen-archief.html?id=' + tentamen.id;
+        }else {
+            storage.editTentamen(tentamen.id, tentamen);
+            window.location = '/pages/tentamen.html?id=' + tentamen.id;
+        }
+    }
 
-        window.location = '/pages/details.html?id=' + tentamen.id;
+    setTentamen(){
+        if (this.archief=='true'){
+            this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
+        }else {
+            this.tentamen = storage.findTentamenById(this.getParam('id'));
+        }
+    }
 
+    getTentamen(){
+        return this.tentamen;
     }
 
     getParam(name) {

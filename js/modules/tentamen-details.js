@@ -16,46 +16,52 @@ export class TentamenDetails extends LitElement {
             <form>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Oud Tentamen</p>
+                        <p style="font-weight: bold">Oud Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding">Opleiding:</label>
+                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding" style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.opleiding}" id="opleiding-oud" name="opleiding-oud" placeholder="Opleiding" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.opleiding}" id="opleiding-oud" name="opleiding-oud"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code">Code:</label>
+                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code" style="font-family: 'Segoe UI Semibold'">Code:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.code}" id="code-oud" name="code-oud" placeholder="Code" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.code}" id="code-oud" name="code-oud"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam">Naam:</label>
+                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam" style="font-family: 'Segoe UI Semibold'">Naam:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.naam}" id="naam-oud" name="naam-oud" placeholder="Naam" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.naam}" id="naam-oud" name="naam-oud"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm" style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.toetsvorm}" id="toetsvorm-oud" name="toetsvorm-oud" placeholder="Toetsvorm" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.toetsvorm}" id="toetsvorm-oud" name="toetsvorm-oud"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging">Weging:</label>
+                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging" style="font-family: 'Segoe UI Semibold'">Weging:</label>
                                     <div class="col-4">
-                                        <input value="${this.tentamen.weging}" id="weging-oud" name="weging-oud" class="form-control" type="test" readonly>
+                                        <input value="${this.tentamen.weging}" id="weging-oud" name="weging-oud"
+                                               type="test" class="form-control-plaintext" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC">EC:</label>
+                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC" style="font-family: 'Segoe UI Semibold'">EC:</label>
                                     <div class="col-4">
-                                        <input value="${this.tentamen.ec}" id="ec-oud" name="ec-oud" class="form-control" type="test" readonly>
+                                        <input value="${this.tentamen.ec}" id="ec-oud" name="ec-oud"
+                                               type="test" class="form-control-plaintext" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -64,47 +70,56 @@ export class TentamenDetails extends LitElement {
                     </div>
 
                     <div class="col-md-6">
-                        <p>Nieuw Tentamen</p>
+                        <p style="font-weight: bold">Nieuw Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding">Opleiding:</label>
+                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding" style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.opleiding}" id="opleiding-nieuw" name="opleiding-nieuw" placeholder="Opleiding" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.opleiding}" id="opleiding-nieuw"
+                                       name="opleiding-nieuw" type="text"
+                                       class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code">Code:</label>
+                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code" style="font-family: 'Segoe UI Semibold'">Code:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.code}" id="code-nieuw" name="code-nieuw" placeholder="Code" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.code}" id="code-nieuw" name="code-nieuw"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam">Naam:</label>
+                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam" style="font-family: 'Segoe UI Semibold'">Naam:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.naam}" id="naam-nieuw" name="naam-nieuw" placeholder="Naam" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.naam}" id="naam-nieuw" name="naam-nieuw"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm:</label>
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm" style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.toetsvorm}" id="toetsvorm-nieuw" name="toetsvorm-nieuw" placeholder="Toetsvorm" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.toetsvorm}" id="toetsvorm-nieuw"
+                                       name="toetsvorm-nieuw" type="text"
+                                       class="form-control-plaintext" readonly>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging:</label>
+                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging" style="font-family: 'Segoe UI Semibold'">Weging:</label>
                                     <div class="col-4">
-                                        <input value="${this.tentamen.nieuwTentamen.weging}" id="weging-nieuw" name="weging-nieuw" class="form-control" type="text" readonly>
+                                        <input value="${this.tentamen.nieuwTentamen.weging}" id="weging-nieuw"
+                                               name="weging-nieuw" type="text" class="form-control-plaintext" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="ec-nieuw" class="col-8 col-form-label"aria-label="Nieuwe ec">EC:</label>
+                                    <label for="ec-nieuw" class="col-8 col-form-label"
+                                           aria-label="Nieuwe ec" style="font-family: 'Segoe UI Semibold'">EC:</label>
                                     <div class="col-4">
-                                        <input value="${this.tentamen.nieuwTentamen.ec}" id="ec-nieuw" name="ec-nieuw" class="form-control" type="text" readonly>
+                                        <input value="${this.tentamen.nieuwTentamen.ec}" id="ec-nieuw" name="ec-nieuw"
+                                               type="text" class="form-control-plaintext" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -117,25 +132,28 @@ export class TentamenDetails extends LitElement {
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="periode" class="col-4 col-form-label">Periode:</label>
+                            <label for="periode" class="col-4 col-form-label" style="font-family: 'Segoe UI Semibold'">Periode:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.periode}" id="periode" name="periode" placeholder="Periode" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.periode}" id="periode" name="periode"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="leider" class="col-4 col-form-label">Leider:</label>
+                            <label for="leider" class="col-4 col-form-label" style="font-family: 'Segoe UI Semibold'">Leider:</label>
                             <div class="col-8">
-                                <input value="${this.tentamen.nieuwTentamen.leider}" id="leider" name="leider" placeholder="Leider" type="text" class="form-control" readonly>
+                                <input value="${this.tentamen.nieuwTentamen.leider}" id="leider" name="leider"
+                                       type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="opmerking" class="col-4 col-form-label">Opmerking:</label>
+                            <label for="opmerking" class="col-4 col-form-label" style="font-family: 'Segoe UI Semibold'">Opmerking:</label>
                             <div class="col-8">
-                                    <textarea id="opmerking" name="opmerking" placeholder="Opmerking" cols="40" rows="4"
-                                              class="form-control" readonly>${this.tentamen.nieuwTentamen.opmerking}</textarea>
+                                    <textarea id="opmerking" name="opmerking" cols="40" rows="4"
+                                              class="form-control-plaintext"
+                                              readonly> ${this.tentamen.nieuwTentamen.opmerking} </textarea>
                             </div>
                         </div>
                     </div>
@@ -159,7 +177,7 @@ export class TentamenDetailsButtons extends LitElement {
 
     static get properties() {
         return {
-            'id': {attribute:false}
+            'id': {attribute: false}
         };
     }
 
@@ -191,7 +209,7 @@ export class TentamenDetailsButtons extends LitElement {
     }
 }
 
-function getParam(name){
+function getParam(name) {
     const parts = window.location.href.split('?');
 
     if (parts.length > 1) {

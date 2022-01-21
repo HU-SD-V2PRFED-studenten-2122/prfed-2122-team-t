@@ -3,15 +3,27 @@ import * as storage from "../storage.js";
 
 class InzichtTabel extends LitElement {
 
+    static get properties() {
+        return {
+            'archief': {attribute: true},
+        };
+    }
+
+    constructor() {
+        super();
+
+        this.archief = 'false';
+    }
+
     render() {
         return html`
 
             <div class="container">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary" type="button" @click="${this.search}">Zoeken</button>
+                        <button class="btn btn-outline-primary" type="button" @click="${this.fillTable}">Zoeken</button>
                     </div>
-                    <input @keyup="${this.search}" id="myInput" type="text" class="form-control"
+                    <input @keyup="${this.fillTable}" id="searchInput" type="text" class="form-control"
                            placeholder="opleiding/naam/code"
                            aria-label="zoekbalk voor tabel met tentamens">
                 </div>
@@ -19,13 +31,13 @@ class InzichtTabel extends LitElement {
                     <table id="tableData" class="table table-bordered table-striped table-hover"
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
-                            <tr>
-                                <th scope="col">Opleiding</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Naam</th>
-                                <th scope="col">Toets</th>
-                                <th scope="col">EC</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Opleiding</th>
+                            <th scope="col">Naam</th>
+                            <th scope="col">Toets</th>
+                            <th scope="col">EC</th>
+                        </tr>
                         </thead>
                         <tbody>
 
@@ -43,47 +55,46 @@ class InzichtTabel extends LitElement {
 
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
-        const tentamens = storage.getTentamens();
-
-        if (!tentamens)
-            return;
-
-        const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
-        for (let index = 0; index < tentamens.length; index++) {
-            //insert Row
-            table.insertRow().innerHTML =
-                "<tr>" +
-                "<th scope='row'>" + tentamens[index].opleiding + "</th>" +
-                "<td>" + tentamens[index].code + "</td>" +
-                "<td>" + tentamens[index].naam + "</td>" +
-                "<td>" + tentamens[index].toetsvorm + "</td>" +
-                "<td>" + tentamens[index].ec + "</td>" +
-                "</tr>";
-            const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-            element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'");
-            element.setAttribute("style","cursor: pointer");
-        }
+        this.fillTable();
     }
 
-    search() {
-        const search = document.getElementById("myInput").value.toLowerCase();
-        const tentamens = storage.getTentamens();
+    fillTable() {
+        const search = document.getElementById("searchInput").value.toLowerCase();
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         table.innerHTML = ""
-        for (let index = 0; index < tentamens.length; index++) {
-            if (tentamens[index].opleiding.toLowerCase().includes(search)||tentamens[index].code.toLowerCase()
-                .includes(search)||tentamens[index].naam.toLowerCase().includes(search)){
+
+        let tentamens;
+
+        if (this.archief === 'false') {
+            tentamens = storage.getTentamens();
+        } else {
+            tentamens = storage.getArchief();
+        }
+
+        for (let i = 0; i < tentamens.length; i++) {
+            if (tentamens[i].opleiding.toLowerCase().includes(search) ||
+                tentamens[i].code.toLowerCase().includes(search) ||
+                tentamens[i].naam.toLowerCase().includes(search)) {
+
                 table.insertRow().innerHTML =
                     "<tr>" +
-                    "<th scope='row'>" + tentamens[index].opleiding + "</th>" +
-                    "<td>" + tentamens[index].code + "</td>" +
-                    "<td>" + tentamens[index].naam + "</td>" +
-                    "<td>" + tentamens[index].toetsvorm + "</td>" +
-                    "<td>" + tentamens[index].ec + "</td>" +
+                    "<th scope='row'>" + tentamens[i].code + "</th>" +
+                    "<td>" + tentamens[i].opleiding + "</td>" +
+                    "<td>" + tentamens[i].naam + "</td>" +
+                    "<td>" + tentamens[i].toetsvorm + "</td>" +
+                    "<td>" + tentamens[i].ec + "</td>" +
                     "</tr>";
+
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("onclick","location.href='details.html?id=" + tentamens[index].id + "'")
-                element.setAttribute("style","cursor: pointer")
+
+                if (this.archief === 'false') {
+                    element.setAttribute("onclick", "location.href='tentamen.html?id=" + tentamens[i].id + "'");
+                } else {
+                    element.setAttribute("onclick", "location.href='tentamen-archief.html?id=" + tentamens[i].id + "'");
+                }
+
+                element.setAttribute("style", "cursor: pointer");
+                element.setAttribute("aria-label", "Link");
             }
         }
     }
