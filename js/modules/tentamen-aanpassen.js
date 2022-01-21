@@ -221,10 +221,10 @@ export class TentamenAanpassen extends LitElement {
 
         if (this.archief=='true'){
             storage.editArchiefTentamen(tentamen.id, tentamen);
-            window.location = '/pages/dearchiveer.html?id=' + tentamen.id;
+            window.location = '/pages/tentamen-archief.html?id=' + tentamen.id;
         }else {
             storage.editTentamen(tentamen.id, tentamen);
-            window.location = '/pages/details.html?id=' + tentamen.id;
+            window.location = '/pages/tentamen.html?id=' + tentamen.id;
         }
     }
 
