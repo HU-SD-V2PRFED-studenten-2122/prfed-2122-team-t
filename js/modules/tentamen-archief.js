@@ -7,7 +7,7 @@ export class dearchiveerKnop extends LitElement{
 
     render() {
         return html`
-            <button @click="${this.dearchiveren}" class="btn btn-success float-right">Dearchiveer</button>
+            <button @click="${this.dearchiveren}" class="btn btn-success float-right">Dearchiveren</button>
         `;
     }
 
@@ -43,7 +43,7 @@ export class verwijderKnop extends LitElement{
 
     render() {
         return html`
-            <button @click="${this.verwijder}" class="btn btn-danger float-right">Verwijder</button>
+            <button @click="${this.verwijder}" class="btn btn-danger float-right">Verwijderen</button>
         `;
     }
 
