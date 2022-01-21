@@ -66,17 +66,22 @@ class LoginComponent extends LitElement {
             return;
         }
 
+        let succes = false;
 
         if (email !== '' && wachtwoord !== '') {
             if (emails.includes(email)) {
                 storage.getGebruikers().filter(gebruiker => {
                     if (gebruiker.email === email && gebruiker.wachtwoord === wachtwoord) {
                         sessionStorage.setItem("ingelogd", "ja");
+                        succes = true;
                         window.location = '/pages/home.html';
                     }
                 })
             }
-            this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
+            if (!succes){
+                this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
+
+            }
         } else {
             this.renderRoot.querySelector("#logintext").textContent = 'E-mail en wachtwoord zijn leeg.';
         }
