@@ -184,7 +184,7 @@ export class TentamenAanpassen extends LitElement {
                 </div>
                 
                 <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
-                <button class="btn btn-primary float-right" @click="${this.makeFieldsEditable}" id="editButton">Edit</button>
+                <button class="btn btn-primary float-right" @click="${this.makeFieldsEditable}" id="aanpassenKnop">Aaanpassen</button>
             </form>
         `;
     }
@@ -289,12 +289,12 @@ export class TentamenAanpassen extends LitElement {
         document.getElementById('leider').removeAttribute("readonly");
         document.getElementById('opslaanButton').removeAttribute("disabled");
 
-        document.getElementById('editButton').setAttribute("disabled", true);
+        document.getElementById('aanpassenKnop').setAttribute("disabled", true);
     }
 
     setForm(){
         if (this.archief!='true'){
-            document.getElementById("editButton").style.display="none";
+            document.getElementById("aanpassenKnop").style.display="none";
         }else {
             this.makeFieldsReadOnly();
         }
