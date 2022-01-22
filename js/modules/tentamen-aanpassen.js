@@ -7,6 +7,7 @@ export class TentamenAanpassen extends LitElement {
     static get properties() {
         return {
             archief:{type: String},
+            editBaar:{type: String},
             tentamen: {type: Tentamen}
         }
     }
@@ -181,8 +182,9 @@ export class TentamenAanpassen extends LitElement {
                         </div>
                     </div>
                 </div>
-
-                <button class="btn btn-primary float-right">Opslaan</button>
+                
+                <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
+                <button class="btn btn-primary float-right" @click="${this.makeFieldsEditable}" id="editButton">Edit</button>
             </form>
         `;
     }
@@ -238,6 +240,64 @@ export class TentamenAanpassen extends LitElement {
 
     getTentamen(){
         return this.tentamen;
+    }
+
+    firstUpdated(_changedProperties) {
+        super.firstUpdated(_changedProperties);
+        this.setForm();
+    }
+
+    makeFieldsReadOnly(){
+        document.getElementById('opleiding-oud').setAttribute("readonly", true);
+        document.getElementById('naam-oud').setAttribute("readonly", true);
+        document.getElementById('weging-oud').setAttribute("readonly", true);
+        document.getElementById('ec-oud').setAttribute("readonly", true);
+        document.getElementById('code-oud').setAttribute("readonly", true);
+        document.getElementById('toetsvorm-oud').setAttribute("readonly", true);
+
+        document.getElementById('opleiding-nieuw').setAttribute("readonly", true);
+        document.getElementById('naam-nieuw').setAttribute("readonly", true);
+        document.getElementById('weging-nieuw').setAttribute("readonly", true);
+        document.getElementById('ec-nieuw').setAttribute("readonly", true);
+        document.getElementById('code-nieuw').setAttribute("readonly", true);
+        document.getElementById('toetsvorm-nieuw').setAttribute("readonly", true);
+
+        document.getElementById('periode').setAttribute("readonly", true);
+        document.getElementById('opmerking').setAttribute("readonly", true);
+        document.getElementById('leider').setAttribute("readonly", true);
+
+        document.getElementById('opslaanButton').setAttribute("disabled", true);
+    }
+
+    makeFieldsEditable(){
+        document.getElementById('opleiding-oud').removeAttribute("readonly");
+        document.getElementById('naam-oud').removeAttribute("readonly");
+        document.getElementById('weging-oud').removeAttribute("readonly");
+        document.getElementById('ec-oud').removeAttribute("readonly");
+        document.getElementById('code-oud').removeAttribute("readonly");
+        document.getElementById('toetsvorm-oud').removeAttribute("readonly");
+
+        document.getElementById('opleiding-nieuw').removeAttribute("readonly");
+        document.getElementById('naam-nieuw').removeAttribute("readonly");
+        document.getElementById('weging-nieuw').removeAttribute("readonly");
+        document.getElementById('ec-nieuw').removeAttribute("readonly");
+        document.getElementById('code-nieuw').removeAttribute("readonly");
+        document.getElementById('toetsvorm-nieuw').removeAttribute("readonly");
+
+        document.getElementById('periode').removeAttribute("readonly");
+        document.getElementById('opmerking').removeAttribute("readonly");
+        document.getElementById('leider').removeAttribute("readonly");
+        document.getElementById('opslaanButton').removeAttribute("disabled");
+
+        document.getElementById('editButton').setAttribute("disabled", true);
+    }
+
+    setForm(){
+        if (this.archief!='true'){
+            document.getElementById("editButton").style.display="none";
+        }else {
+            this.makeFieldsReadOnly();
+        }
     }
 
     getParam(name) {
