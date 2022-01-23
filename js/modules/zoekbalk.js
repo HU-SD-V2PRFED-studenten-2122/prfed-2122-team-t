@@ -24,7 +24,7 @@ class Zoekbalk extends LitElement {
                         <button class="btn btn-outline-primary" type="button" @click="${this.search}">Zoeken</button>
                     </div>
                     <input @keyup="${this.search}" id="searchInput" type="text" class="form-control"
-                           placeholder="opleiding/naam/code"
+                           placeholder="code/opleiding/naam"
                            aria-label="zoekbalk voor tabel met tentamens">
                 </div>
             </div>
