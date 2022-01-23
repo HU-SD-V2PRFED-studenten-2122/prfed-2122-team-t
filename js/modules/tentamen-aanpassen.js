@@ -184,7 +184,7 @@ export class TentamenAanpassen extends LitElement {
                 </div>
 
                 <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
-                <button class="btn btn-primary float-right" @click="${this.makeFieldsEditable}" id="aanpassenKnop">
+                <button class="btn btn-primary float-right" @click="${this.archiefForm}" id="aanpassenKnop">
                     Aanpassen
                 </button>
             </form>
@@ -200,10 +200,55 @@ export class TentamenAanpassen extends LitElement {
         this.setTentamen();
     }
 
+    setTentamen() {
+        if (this.archief === 'true') {
+            this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
+        } else {
+            this.tentamen = storage.findTentamenById(this.getParam('id'));
+        }
+    }
+
+    firstUpdated(_changedProperties) {
+        super.firstUpdated(_changedProperties);
+        this.setForm();
+    }
+
+    setForm() {
+        if (this.archief === 'true') {
+            this.archiefForm();
+        } else {
+            document.getElementById("aanpassenKnop").style.display = "none";
+        }
+    }
+
+    archiefForm() {
+        const inputFields = document.getElementById('aanpassen-form').querySelectorAll('input, textarea');
+
+        const opslaanButton = document.getElementById('opslaanButton');
+        const aanpassenButton = document.getElementById('aanpassenKnop');
+
+        if (opslaanButton.getAttribute('disabled')) {
+
+            for (const fields of inputFields) {
+                fields.removeAttribute("readonly");
+            }
+            opslaanButton.removeAttribute("disabled");
+            aanpassenButton.setAttribute("disabled", 'true');
+
+        } else {
+
+            for (const fields of inputFields) {
+                fields.setAttribute("readonly", 'true');
+            }
+            opslaanButton.setAttribute("disabled", 'true');
+
+        }
+    }
+
     submitChanges(event) {
         event.preventDefault();
 
-        const tentamen = this.getTentamen();
+        const tentamen = this.tentamen;
 
         tentamen.opleiding = document.getElementById('opleiding-oud').value;
         tentamen.naam = document.getElementById('naam-oud').value;
@@ -229,48 +274,6 @@ export class TentamenAanpassen extends LitElement {
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;
-        }
-    }
-
-    setTentamen() {
-        if (this.archief === 'true') {
-            this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
-        } else {
-            this.tentamen = storage.findTentamenById(this.getParam('id'));
-        }
-    }
-
-    getTentamen() {
-        return this.tentamen;
-    }
-
-    firstUpdated(_changedProperties) {
-        super.firstUpdated(_changedProperties);
-        this.setForm();
-    }
-
-    makeFieldsReadOnly() {
-        for (const fields of document.getElementById('aanpassen-form').querySelectorAll('input, textarea')) {
-            fields.setAttribute("readonly", 'true');
-        }
-
-        document.getElementById('opslaanButton').setAttribute("disabled", 'true');
-    }
-
-    makeFieldsEditable() {
-        for (const fields of document.getElementById('aanpassen-form').querySelectorAll('input, textarea')) {
-            fields.removeAttribute("readonly");
-        }
-
-        document.getElementById('opslaanButton').removeAttribute("disabled");
-        document.getElementById('aanpassenKnop').setAttribute("disabled", 'true');
-    }
-
-    setForm() {
-        if (this.archief !== 'true') {
-            document.getElementById("aanpassenKnop").style.display = "none";
-        } else {
-            this.makeFieldsReadOnly();
         }
     }
 
