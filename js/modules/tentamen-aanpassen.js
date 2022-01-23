@@ -184,7 +184,7 @@ export class TentamenAanpassen extends LitElement {
                 </div>
 
                 <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
-                <button class="btn btn-primary float-right" @click="${this.archiefForm}" id="aanpassenKnop">
+                <button class="btn btn-primary float-right" @click="${this.archiefFormSwitch}" id="aanpassenKnop">
                     Aanpassen
                 </button>
             </form>
@@ -215,13 +215,13 @@ export class TentamenAanpassen extends LitElement {
 
     setForm() {
         if (this.archief === 'true') {
-            this.archiefForm();
+            this.archiefFormSwitch();
         } else {
             document.getElementById("aanpassenKnop").style.display = "none";
         }
     }
 
-    archiefForm() {
+    archiefFormSwitch() {
         const inputFields = document.getElementById('aanpassen-form').querySelectorAll('input, textarea');
 
         const opslaanButton = document.getElementById('opslaanButton');
@@ -240,6 +240,7 @@ export class TentamenAanpassen extends LitElement {
             for (const fields of inputFields) {
                 fields.setAttribute("readonly", 'true');
             }
+            aanpassenButton.removeAttribute("disabled");
             opslaanButton.setAttribute("disabled", 'true');
 
         }
@@ -270,7 +271,7 @@ export class TentamenAanpassen extends LitElement {
 
         if (this.archief === 'true') {
             storage.editArchiefTentamen(tentamen.id, tentamen);
-            window.location = '/pages/tentamen-archief.html?id=' + tentamen.id;
+            this.archiefFormSwitch();
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;

@@ -9,7 +9,7 @@ class ExportKnop extends LitElement {
             return;
 
         return html`
-            <button class="btn btn-primary float-right" @click="${this.exporteren}">Exporteren</button>
+            <button class="btn btn-secondary float-right" @click="${this.exporteren}">Exporteren</button>
         `;
     }
 
