@@ -23,18 +23,23 @@
       Tentamen details
 
       <knop-component link="../../pages/keuren.html" text="Terug" class="secondary" rechts="true"></knop-component>
-      <tentamen-keuren-wijzigen-btn-component></tentamen-keuren-wijzigen-btn-componentt>
     </div>
 
     <div class="card-body">
 
-      <tentamen-keuren-details-component></tentamen-keuren-details-component>
+      <tentamen-aanpassen-component mode="keuren"></tentamen-aanpassen-component>
 
     </div>
 
   </div>
 
 </div>
+
+<script>
+  if(sessionStorage.getItem("ingelogd") != 'ja'){
+    window.location.href = '/index.html';
+  }
+</script>
 
 <script src="../js/index.js" type="module"></script>
 

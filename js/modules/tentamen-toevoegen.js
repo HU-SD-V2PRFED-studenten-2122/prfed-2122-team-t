@@ -46,7 +46,7 @@ export class TentamenToevoegen extends LitElement {
                                    aria-label="Oude toetsvorm">Toetsvorm: *</label>
                             <div class="col-8">
                                 <input id="toetsvorm-oud" name="toetsvorm-oud" placeholder="Toetsvorm" type="text"
-                                       class="form-control" required="required"  aria-required="true">
+                                       class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="row">
@@ -56,7 +56,8 @@ export class TentamenToevoegen extends LitElement {
                                            aria-label="Oude weging">Weging: *</label>
                                     <div class="col-4">
                                         <input id="weging-oud" name="weging-oud" class="form-control"
-                                               required="required" type="number" step="0.1" value="1" aria-required="true">
+                                               required="required" type="number" step="0.1" value="1"
+                                               aria-required="true">
                                     </div>
                                 </div>
                             </div>
@@ -86,21 +87,24 @@ export class TentamenToevoegen extends LitElement {
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code ">Code: *</label>
+                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code ">Code:
+                                *</label>
                             <div class="col-8">
                                 <input id="code-nieuw" name="code-nieuw" placeholder="Code" type="text"
                                        class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam ">Naam: *</label>
+                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam ">Naam:
+                                *</label>
                             <div class="col-8">
                                 <input id="naam-nieuw" name="naam-nieuw" placeholder="Naam" type="text"
                                        class="form-control" required="required" aria-required="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm: *</label>
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm">Toetsvorm:
+                                *</label>
                             <div class="col-8">
                                 <input id="toetsvorm-nieuw" name="toetsvorm-nieuw" placeholder="Toetsvorm" type="text"
                                        class="form-control" required="required" aria-required="true">
@@ -110,7 +114,8 @@ export class TentamenToevoegen extends LitElement {
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging: *</label>
+                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging">Weging:
+                                        *</label>
                                     <div class="col-4">
                                         <input id="weging-nieuw" name="weging-nieuw" class="form-control"
                                                required="required" type="number" step="0.1" value="1"

@@ -6,7 +6,7 @@ export class TentamenAanpassen extends LitElement {
 
     static get properties() {
         return {
-            archief: {type: String},
+            mode: {type: String},
             editBaar: {type: String},
             tentamen: {type: Tentamen}
         }
@@ -201,8 +201,10 @@ export class TentamenAanpassen extends LitElement {
     }
 
     setTentamen() {
-        if (this.archief === 'true') {
+        if (this.mode === 'archief') {
             this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
+        } else if (this.mode === 'keuren') {
+            this.tentamen = storage.findDraftTentamenById(this.getParam('id'));
         } else {
             this.tentamen = storage.findTentamenById(this.getParam('id'));
         }
@@ -214,14 +216,16 @@ export class TentamenAanpassen extends LitElement {
     }
 
     setForm() {
-        if (this.archief === 'true') {
-            this.archiefFormSwitch();
+        if (this.mode === 'archief') {
+            this.formSwitch();
+        } else if (this.mode === 'keuren') {
+            this.formSwitch();
         } else {
             document.getElementById("aanpassenKnop").style.display = "none";
         }
     }
 
-    archiefFormSwitch() {
+    formSwitch() {
         const inputFields = document.getElementById('aanpassen-form').querySelectorAll('input, textarea');
 
         const opslaanButton = document.getElementById('opslaanButton');
@@ -269,9 +273,12 @@ export class TentamenAanpassen extends LitElement {
         tentamen.nieuwTentamen.opmerking = document.getElementById('opmerking').value;
         tentamen.nieuwTentamen.leider = document.getElementById('leider').value;
 
-        if (this.archief === 'true') {
+        if (this.mode === 'archief') {
             storage.editArchiefTentamen(tentamen.id, tentamen);
-            this.archiefFormSwitch();
+            this.formSwitch();
+        } else if (this.mode === 'keuren') {
+            storage.editDraftTentamen(tentamen.id, tentamen);
+            this.formSwitch();
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;

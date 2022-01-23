@@ -3,7 +3,7 @@ import {LitElement, html} from "lit";
 import {Tentamen} from "../domein/tentamen";
 
 
-export class dearchiveerKnop extends LitElement{
+export class dearchiveerKnop extends LitElement {
 
     render() {
         return html`
@@ -19,7 +19,7 @@ export class dearchiveerKnop extends LitElement{
         return this;
     }
 
-    dearchiveren(){
+    dearchiveren() {
         storage.deArchifeerTentamen(storage.findArchiefTentamenById(this.getParam('id')));
         window.location = '../../pages/home-archief.html';
     }
@@ -39,7 +39,7 @@ export class dearchiveerKnop extends LitElement{
 }
 
 
-export class verwijderKnop extends LitElement{
+export class verwijderKnop extends LitElement {
 
     render() {
         return html`
@@ -55,7 +55,7 @@ export class verwijderKnop extends LitElement{
         return this;
     }
 
-    verwijder(){
+    verwijder() {
         storage.verwijderVanArchief(storage.findArchiefTentamenById(this.getParam('id')).id)
         window.location = '../../pages/home-archief.html';
     }
@@ -74,5 +74,5 @@ export class verwijderKnop extends LitElement{
 
 }
 
-customElements.define('dearchiveer-knop',dearchiveerKnop);
-customElements.define('verwijder-knop',verwijderKnop);
+customElements.define('dearchiveer-knop', dearchiveerKnop);
+customElements.define('verwijder-knop', verwijderKnop);

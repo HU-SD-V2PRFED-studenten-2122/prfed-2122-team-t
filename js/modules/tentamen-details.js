@@ -19,28 +19,32 @@ export class TentamenDetails extends LitElement {
                         <p style="font-weight: bold">Oud Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding" style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
+                            <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding"
+                                   style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.opleiding}" id="opleiding-oud" name="opleiding-oud"
                                        type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code" style="font-family: 'Segoe UI Semibold'">Code:</label>
+                            <label for="code-oud" class="col-4 col-form-label" aria-label="Oude code"
+                                   style="font-family: 'Segoe UI Semibold'">Code:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.code}" id="code-oud" name="code-oud"
                                        type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam" style="font-family: 'Segoe UI Semibold'">Naam:</label>
+                            <label for="naam-oud" class="col-4 col-form-label" aria-label="Oude naam"
+                                   style="font-family: 'Segoe UI Semibold'">Naam:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.naam}" id="naam-oud" name="naam-oud"
                                        type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm" style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
+                            <label for="toetsvorm-oud" class="col-4 col-form-label" aria-label="Oude toetsvorm"
+                                   style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.toetsvorm}" id="toetsvorm-oud" name="toetsvorm-oud"
                                        type="text" class="form-control-plaintext" readonly>
@@ -49,7 +53,8 @@ export class TentamenDetails extends LitElement {
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging" style="font-family: 'Segoe UI Semibold'">Weging:</label>
+                                    <label for="weging-oud" class="col-8 col-form-label" aria-label="Oude weging"
+                                           style="font-family: 'Segoe UI Semibold'">Weging:</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.weging}" id="weging-oud" name="weging-oud"
                                                type="test" class="form-control-plaintext" readonly>
@@ -58,7 +63,8 @@ export class TentamenDetails extends LitElement {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC" style="font-family: 'Segoe UI Semibold'">EC:</label>
+                                    <label for="ec-oud" class="col-8 col-form-label" aria-label="Oude EC"
+                                           style="font-family: 'Segoe UI Semibold'">EC:</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.ec}" id="ec-oud" name="ec-oud"
                                                type="test" class="form-control-plaintext" readonly>
@@ -73,7 +79,8 @@ export class TentamenDetails extends LitElement {
                         <p style="font-weight: bold">Nieuw Tentamen</p>
                         <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
                         <div class="form-group row">
-                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding" style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
+                            <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding"
+                                   style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.opleiding}" id="opleiding-nieuw"
                                        name="opleiding-nieuw" type="text"
@@ -81,21 +88,24 @@ export class TentamenDetails extends LitElement {
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code" style="font-family: 'Segoe UI Semibold'">Code:</label>
+                            <label for="code-nieuw" class="col-4 col-form-label" aria-label="Nieuwe code"
+                                   style="font-family: 'Segoe UI Semibold'">Code:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.code}" id="code-nieuw" name="code-nieuw"
                                        type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam" style="font-family: 'Segoe UI Semibold'">Naam:</label>
+                            <label for="naam-nieuw" class="col-4 col-form-label" aria-label="Nieuwe naam"
+                                   style="font-family: 'Segoe UI Semibold'">Naam:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.naam}" id="naam-nieuw" name="naam-nieuw"
                                        type="text" class="form-control-plaintext" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm" style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
+                            <label for="toetsvorm-nieuw" class="col-4 col-form-label" aria-label="Nieuwe toetsvorm"
+                                   style="font-family: 'Segoe UI Semibold'">Toetsvorm:</label>
                             <div class="col-8">
                                 <input value="${this.tentamen.nieuwTentamen.toetsvorm}" id="toetsvorm-nieuw"
                                        name="toetsvorm-nieuw" type="text"
@@ -106,7 +116,8 @@ export class TentamenDetails extends LitElement {
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging" style="font-family: 'Segoe UI Semibold'">Weging:</label>
+                                    <label for="weging-nieuw" class="col-8 col-form-label" aria-label="Nieuwe weging"
+                                           style="font-family: 'Segoe UI Semibold'">Weging:</label>
                                     <div class="col-4">
                                         <input value="${this.tentamen.nieuwTentamen.weging}" id="weging-nieuw"
                                                name="weging-nieuw" type="text" class="form-control-plaintext" readonly>
@@ -149,7 +160,8 @@ export class TentamenDetails extends LitElement {
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="opmerking" class="col-4 col-form-label" style="font-family: 'Segoe UI Semibold'">Opmerking:</label>
+                            <label for="opmerking" class="col-4 col-form-label"
+                                   style="font-family: 'Segoe UI Semibold'">Opmerking:</label>
                             <div class="col-8">
                                     <textarea id="opmerking" name="opmerking" cols="40" rows="4"
                                               class="form-control-plaintext"
