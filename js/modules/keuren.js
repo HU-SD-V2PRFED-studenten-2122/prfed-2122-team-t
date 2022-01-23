@@ -79,9 +79,16 @@ class keurTabel extends LitElement {
                 const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
                 // element.setAttribute("onclick", "location.href='tentamen-keuren-details.html?id=" + tentamens[i].id + "'");                             
                 element.setAttribute("style", "cursor: pointer");
-                element.setAttribute("aria-label", "Link");        
+                element.setAttribute("aria-label", "Link");    
+                
+                for(const td of element.querySelectorAll('td')){
+                    if (td.getElementsByTagName('input').length === 0){
+                        td.setAttribute("onclick", "location.href='tentamen-keuren-details.html?id=" + tentamens[i].id + "'");
+                    }
+                }   
 
-        }             
+        }     
+         
     } 
     
     getSelectedCheckboxes(){
