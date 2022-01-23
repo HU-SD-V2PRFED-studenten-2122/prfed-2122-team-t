@@ -3,6 +3,7 @@ import * as storage from "../storage.js";
 import {Tentamen} from "../domein/tentamen";
 
 class keurTabel extends LitElement {
+
     tentamensSelected = [];
 
     constructor() {
@@ -11,14 +12,15 @@ class keurTabel extends LitElement {
         sessionStorage.setItem('selected-tentamens-id', '[]')
     }
 
-
     render() {
         return html`
 
             <div class="container">
 
                 <div style="height: 500px; overflow-y: auto; box-sizing: border-box;border: solid 1px rgb(217,217,217);background-color: rgba(0,0,0,.04);">
+
                     <table @click="${this.resetMessage}" id="tableData" class="table table-bordered table-striped table-hover"
+
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
                         <tr>
@@ -27,8 +29,10 @@ class keurTabel extends LitElement {
                             <th scope="col">Naam</th>
                             <th scope="col">Toets</th>
                             <th scope="col">EC</th>
+
                             <th scope="col"><input type='checkbox' id="checkbox-select-all"
                                                    @change="${this.selectAllandDeSelectAll.bind(this)}"></th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -39,7 +43,6 @@ class keurTabel extends LitElement {
             </div>
             <div role="alert" class="alert alert-danger" id="message"
                  style="display: none; margin-left: 12px; margin-right: 12px; margin-top: 12px;">
-
             </div>
         `;
     }
@@ -102,7 +105,7 @@ class keurTabel extends LitElement {
         // ophalen id's van geselecteerde checkboxes
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var checkbox_selectall = document.querySelectorAll("input[type=checkbox][id=checkbox-select-all]");
-
+      
         checkbox_selectall.forEach(function (checkbox) {
             checkbox.addEventListener('change', function () {
                 this.tentamensSelected =
@@ -158,7 +161,7 @@ class keurTabel extends LitElement {
             message.style.display = 'none';
         }
     }
-
+  
     selectAllandDeSelectAll() {
         var checkboxes = document.getElementsByName('chk');
         var selectAllBox = this.querySelector('#checkbox-select-all');
