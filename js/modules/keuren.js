@@ -230,11 +230,7 @@ class keurTabel extends LitElement {
         var draftTentamens = storage.getDraftTentamens();
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var auto_tentamens = [];
-
-        if(storage.getAllSelectedTentamenId.length === 0){
-            this.toggleMessage(true,'Een of meerdere tentamens niet volledig ingevuld.')
-        }
+        var auto_tentamens = [];        
                    
         Array.from(checkboxes)            
         .map(i => {
@@ -256,7 +252,11 @@ class keurTabel extends LitElement {
                     sessionStorage.setItem('auto-tentamens',JSON.stringify(auto_tentamens))      
                 }            
             }                 
-        })                
+        }) 
+        
+        if(storage.getAllSelectedTentamenId().length === 0){
+            this.toggleMessage(true,'Een of meerdere tentamens niet volledig ingevuld.')
+        }
     }
 
     loadSelectedCheckboxes(){     
