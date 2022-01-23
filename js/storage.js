@@ -57,6 +57,23 @@ export function findArchiefTentamenById(id) {
 }
 
 /**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findDraftTentamenById(id) {
+    if (sessionStorage.getItem('draftTentamens') != null) {
+        for (let i = 0; i < getDraftTentamens().length; i++) {
+            if (getDraftTentamens()[i].id == id)
+                return getDraftTentamens()[i];
+        }
+    }
+
+    return null;
+}
+
+
+/**
  * Sla een tentamen op in de sessie
  * @param {Tentamen} tentamen
  */
@@ -121,6 +138,29 @@ export function editTentamen(id, tentamen) {
 
     sessionStorage.setItem('tentamens', JSON.stringify(tentamens));
 }
+
+/**
+ * Wijzig een draft-tentamen
+ * @param {number} id
+ * @param {Tentamen} tentamen
+ */
+export function editDraftTentamen(id, tentamen) {
+    let tentamens = [];
+
+    getDraftTentamens().forEach(function (element) {
+        tentamens.push(element);
+    });
+
+    for (let i = 0; i < tentamens.length; i++) {
+        if (tentamens[i].id == id) {
+            tentamen.id = id;
+            tentamens[i] = tentamen;
+        }
+    }
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
 
 /**
  * Wijzig een archief tentamen
@@ -267,6 +307,49 @@ export function deleteDraftTentamen(id) {
 export function publishDraftTentamen(tentamen) {
     deleteDraftTentamen(tentamen.id);
     saveTentamen(tentamen);
+}
+/**
+ * Haal alle geselecteerde tentamen-id's op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getAllSelectedTentamenId() {
+    return JSON.parse(sessionStorage.getItem('selected-tentamens-id'));
+}
+
+/**
+ * Haal alle geselecteerde tentamenobjecten op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getSavedTentamens() {
+    return JSON.parse(sessionStorage.getItem('saved-selected-tentamens'));
+}
+
+/**
+ * Haal alle geselecteerde tentamen-id's op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getSavedTentamenId() {
+    if(sessionStorage.getItem('saved-tentamens-id')){
+        return JSON.parse(sessionStorage.getItem('saved-tentamens-id'));
+    }
+    return [];
+}
+
+
+/**
+ * Verwijder een geselecteerde tentamen uit de sessie
+ * @param {number} id
+ */
+export function deleteSavedTentamen(id) {
+    let tentamens = [];
+
+    getSavedTentamens().forEach(function (element) {
+        if (element.id != id) {
+            tentamens.push(element);
+        }
+    });
+
+    sessionStorage.setItem('saved-selected-tentamens', JSON.stringify(tentamens));
 }
 
 /**
