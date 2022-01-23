@@ -184,7 +184,7 @@ export class TentamenAanpassen extends LitElement {
                 </div>
 
                 <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
-                <button class="btn btn-primary float-right" @click="${this.archiefFormSwitch}" id="aanpassenKnop">
+                <button class="btn btn-primary float-right" @click="${this.formSwitch}" id="aanpassenKnop">
                     Aanpassen
                 </button>
             </form>
