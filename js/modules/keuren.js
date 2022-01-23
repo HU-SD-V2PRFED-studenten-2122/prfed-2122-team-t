@@ -3,14 +3,14 @@ import * as storage from "../storage.js";
 import {Tentamen} from "../domein/tentamen";
 
 class keurTabel extends LitElement {
-    tentamensSelected = [];  
+    tentamensSelected = [];
 
-    constructor(){
+    constructor() {
         super();
 
-        sessionStorage.setItem('selected-tentamens-id','[]')
+        sessionStorage.setItem('selected-tentamens-id', '[]')
     }
-    
+
 
     render() {
         return html`
@@ -18,7 +18,7 @@ class keurTabel extends LitElement {
             <div class="container">
 
                 <div style="height: 500px; overflow-y: auto; box-sizing: border-box;border: solid 1px rgb(217,217,217);background-color: rgba(0,0,0,.04);">
-                    <table id="tableData" class="table table-bordered table-striped table-hover"
+                    <table @click="${this.resetMessage}" id="tableData" class="table table-bordered table-striped table-hover"
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
                         <tr>
@@ -27,7 +27,8 @@ class keurTabel extends LitElement {
                             <th scope="col">Naam</th>
                             <th scope="col">Toets</th>
                             <th scope="col">EC</th>
-                            <th scope="col"><input type='checkbox' id="checkbox-select-all" @change="${this.selectAllandDeSelectAll.bind(this)}"></th>
+                            <th scope="col"><input type='checkbox' id="checkbox-select-all"
+                                                   @change="${this.selectAllandDeSelectAll.bind(this)}"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -36,8 +37,9 @@ class keurTabel extends LitElement {
                     </table>
                 </div>
             </div>
-            <div role="alert" class="alert alert-danger" id="message" style="display: none; margin-left: 12px; margin-right: 12px; margin-top: 12px;">
-                
+            <div role="alert" class="alert alert-danger" id="message"
+                 style="display: none; margin-left: 12px; margin-right: 12px; margin-top: 12px;">
+
             </div>
         `;
     }
@@ -54,235 +56,267 @@ class keurTabel extends LitElement {
         this.loadSelectedCheckboxes();
 
         document.querySelector('#goedkeuren-btn').addEventListener('click', this.goedkeuren.bind(this));
-        document.querySelector('#afkeuren-btn').addEventListener('click',this.afkeuren.bind(this))
-        document.querySelector('#autokeuren-btn').addEventListener('click',this.autokeuren.bind(this))
+        document.querySelector('#afkeuren-btn').addEventListener('click', this.afkeuren.bind(this))
+        document.querySelector('#autokeuren-btn').addEventListener('click', this.autokeuren.bind(this))
         this.querySelector('#checkbox-select-all').addEventListener('change', this.getSelectedCheckboxes.bind(this))
     }
 
-    fillTable() {        
+    resetMessage(){
+        document.querySelector("#message").style.display = 'none';
+    }
+
+
+
+    fillTable() {
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         table.innerHTML = ""
 
         const tentamens = storage.getDraftTentamens();
-        for (let i = 0; i < tentamens.length; i++) {            
+        for (let i = 0; i < tentamens.length; i++) {
 
-                table.insertRow().innerHTML =
-                    "<tr>" +
-                    "<th scope='row'>" + tentamens[i].code + "</th>" +
-                    "<td>" + tentamens[i].opleiding + "</td>" +
-                    "<td>" + tentamens[i].naam + "</td>" +
-                    "<td>" + tentamens[i].toetsvorm + "</td>" +
-                    "<td>" + tentamens[i].ec + "</td>" +
-                    "<td>" + " " + `<input type='checkbox' name='chk' value= ${tentamens[i].id} id="checkbox-tentamen"}>`+ " " + "</td>" +
-                    "</tr>";
+            table.insertRow().innerHTML =
+                "<tr>" +
+                "<th scope='row'>" + tentamens[i].code + "</th>" +
+                "<td>" + tentamens[i].opleiding + "</td>" +
+                "<td>" + tentamens[i].naam + "</td>" +
+                "<td>" + tentamens[i].toetsvorm + "</td>" +
+                "<td>" + tentamens[i].ec + "</td>" +
+                "<td>" + " " + `<input type='checkbox' name='chk' value= ${tentamens[i].id} id="checkbox-tentamen"}>` + " " + "</td>" +
+                "</tr>";
 
-                const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
-                element.setAttribute("style", "cursor: pointer");
-                element.setAttribute("aria-label", "Link");    
-                
-                for(const td of element.querySelectorAll('td')){
-                    if (td.getElementsByTagName('input').length === 0){
-                        td.setAttribute("onclick", "location.href='tentamen-keuren-details.html?id=" + tentamens[i].id + "'");
-                    }
-                }   
+            const element = document.getElementsByTagName("tr")[document.getElementsByTagName("tr").length - 1];
+            element.setAttribute("style", "cursor: pointer");
+            element.setAttribute("aria-label", "Link");
 
-        }     
-         
-    } 
-    
-    getSelectedCheckboxes(){
+            for (const td of element.querySelectorAll('td')) {
+                if (td.getElementsByTagName('input').length === 0) {
+                    td.setAttribute("onclick", "location.href='tentamen-keuren-details.html?id=" + tentamens[i].id + "'");
+                }
+            }
+
+        }
+
+    }
+
+    getSelectedCheckboxes() {
         // ophalen id's van geselecteerde checkboxes
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var checkbox_selectall = document.querySelectorAll("input[type=checkbox][id=checkbox-select-all]");
 
-        checkbox_selectall.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                this.tentamensSelected = 
-                Array.from(checkboxes) 
-                .filter(i => i.checked) 
-                .map(i => i.value)         
-                    sessionStorage.setItem('selected-tentamens-id',JSON.stringify(this.tentamensSelected))                    
-                    sessionStorage.setItem('saved-tentamens-id',JSON.stringify(this.tentamensSelected))                    
-                })
-            });
+        checkbox_selectall.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                this.tentamensSelected =
+                    Array.from(checkboxes)
+                        .filter(i => i.checked)
+                        .map(i => i.value)
+                sessionStorage.setItem('selected-tentamens-id', JSON.stringify(this.tentamensSelected))
+                sessionStorage.setItem('saved-tentamens-id', JSON.stringify(this.tentamensSelected))
+            })
+        });
 
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                this.tentamensSelected = 
-                Array.from(checkboxes) 
-                .filter(i => i.checked) 
-                .map(i => i.value)          
-                    sessionStorage.setItem('selected-tentamens-id',JSON.stringify(this.tentamensSelected))                    
-                    sessionStorage.setItem('saved-tentamens-id',JSON.stringify(this.tentamensSelected))                    
-                })
-            });
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                this.tentamensSelected =
+                    Array.from(checkboxes)
+                        .filter(i => i.checked)
+                        .map(i => i.value)
+                sessionStorage.setItem('selected-tentamens-id', JSON.stringify(this.tentamensSelected))
+                sessionStorage.setItem('saved-tentamens-id', JSON.stringify(this.tentamensSelected))
+            })
+        });
     }
 
-    loadSelectedBoxesId(){
-        console.log('checked boxes')
+    loadSelectedBoxesId() {
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        this.tentamensSelected = Array.from(checkboxes) 
-                .filter(i => i.checked) 
-                .map(i => i.value)         
-                    sessionStorage.setItem('selected-tentamens-id',JSON.stringify(this.tentamensSelected)) 
+        this.tentamensSelected = Array.from(checkboxes)
+            .filter(i => i.checked)
+            .map(i => i.value)
+        sessionStorage.setItem('selected-tentamens-id', JSON.stringify(this.tentamensSelected))
     }
-    
-    getSelectedTentamens(){       
+
+    getSelectedTentamens() {
         var draftTentamens = storage.getDraftTentamens();
         var selectedTentamens = storage.getAllSelectedTentamenId();
-        var saveTentamens =[];
+        var saveTentamens = [];
 
-        for(var x = 0; x<draftTentamens.length; x++){                
-            for(var i = 0; i<selectedTentamens.length; i++){
-                if(draftTentamens[x].id === selectedTentamens[i]){  
+        for (var x = 0; x < draftTentamens.length; x++) {
+            for (var i = 0; i < selectedTentamens.length; i++) {
+                if (draftTentamens[x].id === selectedTentamens[i]) {
                     saveTentamens.push(draftTentamens[x])
-                    sessionStorage.setItem('saved-selected-tentamens',JSON.stringify(saveTentamens))      
-                }                    
+                    sessionStorage.setItem('saved-selected-tentamens', JSON.stringify(saveTentamens))
+                }
             }
-        }        
-    }   
+        }
+    }
 
-    toggleMessage(bool,text) {
+    toggleMessage(bool, text) {
         const message = document.getElementById('message');
-        if (bool == true){
+        if (bool == true) {
             message.style.display = 'block';
             message.textContent = text;
-        }
-        else{
+        } else {
             message.style.display = 'none';
         }
     }
 
-    selectAllandDeSelectAll(){   
-        var checkboxes=document.getElementsByName('chk');
-        var selectAllBox = this.querySelector('#checkbox-select-all');  
-        for(var i=0; i<checkboxes.length; i++){  
-            if(checkboxes[i].type=='checkbox'){
-                if(this.querySelector('#checkbox-select-all').checked === true){                    
-                    checkboxes[i].checked=true;                    
-                }   
-                if(this.querySelector('#checkbox-select-all').checked === false){
-                    checkboxes[i].checked = false;                   
-                }               
-            }                    
-        }                    
+    selectAllandDeSelectAll() {
+        var checkboxes = document.getElementsByName('chk');
+        var selectAllBox = this.querySelector('#checkbox-select-all');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                if (this.querySelector('#checkbox-select-all').checked === true) {
+                    checkboxes[i].checked = true;
+                }
+                if (this.querySelector('#checkbox-select-all').checked === false) {
+                    checkboxes[i].checked = false;
+                }
+            }
+        }
     }
 
 
-    goedkeuren(e) {        
-        
-        if(storage.getAllSelectedTentamenId().length === 0){
-            this.toggleMessage(true,'U heeft niks geselecteerd.');            
-        }    
-        
+    goedkeuren(e) {
+
+        if (storage.getAllSelectedTentamenId().length === 0) {
+            this.toggleMessage(true, 'U heeft niks geselecteerd.');
+        }
+
         this.getSelectedTentamens();
 
-        storage.getSavedTentamens().map(tentamen =>{
+        storage.getSavedTentamens().map(tentamen => {
 
-        const nieuweOpleiding = tentamen.nieuwTentamen.opleiding;
-        const nieuweCode = tentamen.nieuwTentamen.code;
-        const nieuweNaam = tentamen.nieuwTentamen.naam;
-        const nieuweToets = tentamen.nieuwTentamen.toetsvorm;
-        const nieuweWeging = tentamen.nieuwTentamen.weging;
-        const nieuweEC = tentamen.nieuwTentamen.ec;
-        const nieuwePeriode = tentamen.nieuwTentamen.periode;
-        const leider = tentamen.nieuwTentamen.leider;
-        const opmerking = tentamen.nieuwTentamen.opmerking;     
+            const nieuweOpleiding = tentamen.nieuwTentamen.opleiding;
+            const nieuweCode = tentamen.nieuwTentamen.code;
+            const nieuweNaam = tentamen.nieuwTentamen.naam;
+            const nieuweToets = tentamen.nieuwTentamen.toetsvorm;
+            const nieuweWeging = tentamen.nieuwTentamen.weging;
+            const nieuweEC = tentamen.nieuwTentamen.ec;
+            const nieuwePeriode = tentamen.nieuwTentamen.periode;
+            const leider = tentamen.nieuwTentamen.leider;
+            const opmerking = tentamen.nieuwTentamen.opmerking;
 
-        const nieuw = new Tentamen(nieuweOpleiding, nieuweCode, nieuweNaam, nieuweToets, nieuweWeging, nieuweEC, nieuwePeriode, leider, opmerking, null);
+            const nieuw = new Tentamen(nieuweOpleiding, nieuweCode, nieuweNaam, nieuweToets, nieuweWeging, nieuweEC, nieuwePeriode, leider, opmerking, null);
 
-        const oudeOpleiding = tentamen.opleiding;
-        const oudeCode = tentamen.code;
-        const oudeNaam = tentamen.naam;
-        const oudeToets =tentamen.toetsvorm;
-        const oudeWeging = tentamen.weging;
-        const oudeEC = tentamen.ec;
+            const oudeOpleiding = tentamen.opleiding;
+            const oudeCode = tentamen.code;
+            const oudeNaam = tentamen.naam;
+            const oudeToets = tentamen.toetsvorm;
+            const oudeWeging = tentamen.weging;
+            const oudeEC = tentamen.ec;
 
-        if(nieuweOpleiding === null || nieuweCode === null || nieuweNaam === null || nieuweToets === null || nieuweWeging === null || nieuweEC === null || nieuwePeriode === null ||  nieuwePeriode === 'JAAR'  || leider === null || oudeOpleiding === null || oudeCode === null || oudeNaam === null || oudeToets === null || oudeWeging === null|| oudeEC === null){
-            this.toggleMessage(true,'Een of meerdere tentamens niet volledig ingevuld.'); 
-            e.preventDefault();  
-            return;                    
-        }
+            if (nieuweOpleiding === null ||
+                nieuweCode === null ||
+                nieuweNaam === null ||
+                nieuweToets === null ||
+                nieuweWeging === null ||
+                nieuweEC === null ||
+                nieuwePeriode === null ||
+                leider === null ||
+                oudeOpleiding === null ||
+                oudeCode === null ||
+                oudeNaam === null ||
+                oudeToets === null ||
+                oudeWeging === null ||
+                oudeEC === null) {
+                this.toggleMessage(true, 'Een of meerdere tentamens niet volledig ingevuld.');
+                e.preventDefault();
+                return;
+            }
 
-        const oud = new Tentamen(oudeOpleiding, oudeCode, oudeNaam, oudeToets, oudeWeging, oudeEC, null, null, null, nieuw);
+            const oud = new Tentamen(oudeOpleiding, oudeCode, oudeNaam, oudeToets, oudeWeging, oudeEC, null, null, null, nieuw);
 
-        storage.deleteDraftTentamen(tentamen.id);
-        storage.saveTentamen(oud);
-        storage.deleteSavedTentamen(tentamen.id)
+            storage.deleteDraftTentamen(tentamen.id);
+            storage.saveTentamen(oud);
+            storage.deleteSavedTentamen(tentamen.id)
 
-        })          
-        sessionStorage.setItem('saved-selected-tentamens','[]');        
-        
-        if(document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0){
+        })
+        sessionStorage.setItem('saved-selected-tentamens', '[]');
+
+        if (document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0) {
             window.location.reload();
         }
-    }    
+    }
 
     afkeuren() {
-        if(storage.getAllSelectedTentamenId().length === 0){
-            this.toggleMessage(true,'U heeft niks geselecteerd');
+        if (storage.getAllSelectedTentamenId().length === 0) {
+            this.toggleMessage(true, 'U heeft niks geselecteerd');
             return;
         }
 
-        storage.getAllSelectedTentamenId().map(id =>{
+        storage.getAllSelectedTentamenId().map(id => {
             storage.deleteDraftTentamen(id);
         })
-        if(document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0){
+        if (document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0) {
             window.location.reload();
         }
     }
 
-    autokeuren(){
+    autokeuren() {
         var draftTentamens = storage.getDraftTentamens();
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var auto_tentamens = [];        
-                   
-        Array.from(checkboxes)            
-        .map(i => {
-            for(var x = 0; x<draftTentamens.length; x++){        
-                if(draftTentamens[x].id === i.value){   
-                                   
-                    if(draftTentamens[x].nieuwTentamen.opleiding !== null && draftTentamens[x].nieuwTentamen.code !== null && draftTentamens[x].nieuwTentamen.naam !== null && draftTentamens[x].nieuwTentamen.toetsvorm !== null && draftTentamens[x].nieuwTentamen.weging !== null && draftTentamens[x].nieuwTentamen.periode !== null && draftTentamens[x].nieuwTentamen.leider !== null  && draftTentamens[x].nieuwTentamen.ec !== null && draftTentamens[x].opleiding !== null && draftTentamens[x].code !== null && draftTentamens[x].naam !== null && draftTentamens[x].toetsvorm !== null && draftTentamens[x].weging !== null && draftTentamens[x].ec !== null && draftTentamens[x].toetsvorm !== null && draftTentamens[x].weging !== null &&  draftTentamens[x].opleiding !== null && draftTentamens[x].naam !== null && draftTentamens[x].toetsvorm !== null && draftTentamens[x].weging !== null && draftTentamens[x].nieuwTentamen.periode !== 'JAAR'){                        
-                        auto_tentamens.push(draftTentamens[x])
-                        i.checked = true;
-                        this.tentamensSelected = 
-                        Array.from(checkboxes) 
-                        .filter(i => i.checked) 
-                        .map(i => i.value)         
-                    sessionStorage.setItem('selected-tentamens-id',JSON.stringify(this.tentamensSelected))     
+        var auto_tentamens = [];
+
+        Array.from(checkboxes)
+            .map(i => {
+                for (var x = 0; x < draftTentamens.length; x++) {
+                    if (draftTentamens[x].id === i.value) {
+                        if (!(draftTentamens[x].nieuwTentamen.opleiding === undefined ||
+                            draftTentamens[x].nieuwTentamen.code === undefined ||
+                            draftTentamens[x].nieuwTentamen.naam === undefined ||
+                            draftTentamens[x].nieuwTentamen.toetsvorm === undefined ||
+                            draftTentamens[x].nieuwTentamen.weging === undefined ||
+                            draftTentamens[x].nieuwTentamen.periode === undefined ||
+                            draftTentamens[x].nieuwTentamen.leider === undefined ||
+                            draftTentamens[x].nieuwTentamen.ec === undefined ||
+                            draftTentamens[x].opleiding === undefined ||
+                            draftTentamens[x].code === undefined ||
+                            draftTentamens[x].naam === undefined ||
+                            draftTentamens[x].toetsvorm === undefined ||
+                            draftTentamens[x].weging === undefined ||
+                            draftTentamens[x].ec === undefined)) {
+
+                            auto_tentamens.push(draftTentamens[x])
+                            i.checked = true;
+                            this.tentamensSelected =
+                                Array.from(checkboxes)
+                                    .filter(i => i.checked)
+                                    .map(i => i.value)
+                            sessionStorage.setItem('selected-tentamens-id', JSON.stringify(this.tentamensSelected))
+                            sessionStorage.setItem('saved-tentamens-id', JSON.stringify(this.tentamensSelected))
+                        } else {
+                            i.checked = false;
+                        }
+                        sessionStorage.setItem('auto-tentamens', JSON.stringify(auto_tentamens))
                     }
-                    else{
-                        i.checked = false;
-                    }                        
-                    sessionStorage.setItem('auto-tentamens',JSON.stringify(auto_tentamens))      
-                }            
-            }                 
-        }) 
-        
-        if(storage.getAllSelectedTentamenId().length === 0){
-            this.toggleMessage(true,'Een of meerdere tentamens niet volledig ingevuld.')
+                }
+            })
+
+        if (storage.getAllSelectedTentamenId().length === 0) {
+            this.toggleMessage(true, 'Een of meerdere tentamens niet volledig ingevuld.')
+        }
+
+        this.goedkeuren();
+    }
+
+    loadSelectedCheckboxes() {
+
+        var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
+        var ids = storage.getSavedTentamenId();
+
+        if (ids.length > 0) {
+            Array.from(checkboxes)
+                .map(i => {
+                    for (var x = 0; x < ids.length; x++) {
+                        if (i.value === ids[x]) {
+                            i.checked = true;
+                        }
+                    }
+                })
+            this.loadSelectedBoxesId();
         }
     }
 
-    loadSelectedCheckboxes(){     
-        
-        var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var ids = storage.getSavedTentamenId();
-        
-        if(ids.length > 0){
-            Array.from(checkboxes)                
-            .map(i => {
-                for(var x = 0; x < ids.length; x++ ){
-                    if(i.value === ids[x]){                        
-                        i.checked = true;
-                    }
-                }   
-            })  
-            this.loadSelectedBoxesId(); 
-        }            
-    }
-    
 }
 
-customElements.define('keur-tabel',keurTabel);
+customElements.define('keur-tabel', keurTabel);

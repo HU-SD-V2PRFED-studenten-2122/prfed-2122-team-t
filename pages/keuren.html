@@ -23,20 +23,25 @@
         <div class="card-header" tabindex="0">
             Controleren van tentamens
 
+            <knop-component link="home.html" text="Terug" class="secondary" rechts="true"></knop-component>
             <knop-component text="Goedkeuren" link="#" class="success" ingelogd="true" rechts="true" id="goedkeuren-btn"></knop-component>
             <knop-component text="Afkeuren" link="#" class="danger" ingelogd="true" rechts="true" id="afkeuren-btn"></knop-component>
-            <knop-component text="Auto-keuren" link="#" class="secondary" ingelogd="true" rechts="true" id="autokeuren-btn"></knop-component>
+            <knop-component text="Auto-goedkeuren" link="#" class="primary" ingelogd="true" rechts="true" id="autokeuren-btn"></knop-component>
         </div>
 
         <div class="card-body">
             <keur-tabel></keur-tabel>
+            <br>
+            <div class="container">
+                <import-element></import-element>
+            </div>
         </div>
 
     </div>
 
 </div>
 
-<script src="../js/index.js" type="module"></script>
+<script src="../dist/bundle.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
