@@ -2,29 +2,12 @@ import {html, LitElement} from "lit";
 import * as XLSX from "xlsx";
 import * as storage from "../storage.js";
 
-class ExportClass {
-    constructor(oudeOpleiding, oudeCode, oudeNaam, oudeToetsvorm, oudeWeging, oudeEc, nieuweOpleiding, nieuweCode, nieuweNaam, nieuweToetsvorm, nieuweWeging, nieuweEc, periode, leider, opmerking) {
-        this.oudeOpleiding = oudeOpleiding;
-        this.oudeCode = oudeCode;
-        this.oudeNaam = oudeNaam;
-        this.oudeToetsvorm = oudeToetsvorm;
-        this.oudeWeging = oudeWeging;
-        this.oudeEc = oudeEc;
-        this.nieuweOpleiding = nieuweOpleiding;
-        this.nieuweCode = nieuweCode;
-        this.nieuweNaam = nieuweNaam;
-        this.nieuweToetsvorm = nieuweToetsvorm;
-        this.nieuweWeging = nieuweWeging;
-        this.nieuweEc = nieuweEc;
-        this.periode = periode;
-        this.leider = leider;
-        this.opmerking = opmerking;
-    }
-}
-
 class ExportKnop extends LitElement {
 
     render() {
+        if (!storage.checkLoggedIn())
+            return;
+
         return html`
             <button class="btn btn-primary float-right" @click="${this.exporteren}">Exporteren</button>
         `;
@@ -37,32 +20,43 @@ class ExportKnop extends LitElement {
     exporteren() {
         let exportData = [];
         storage.getTentamens().forEach(e => {
-            exportData.push(new ExportClass(
+            exportData.push([
                 e.opleiding, e.code, e.naam, e.toetsvorm, e.weging, e.ec,
                 e.nieuwTentamen.opleiding, e.nieuwTentamen.code, e.nieuwTentamen.naam, e.nieuwTentamen.toetsvorm, e.nieuwTentamen.weging, e.nieuwTentamen.ec,
-                e.nieuwTentamen.periode, e.nieuwTentamen.leider, e.nieuwTentamen.opmerking));
+                e.nieuwTentamen.periode, e.nieuwTentamen.leider, e.nieuwTentamen.opmerking]);
         });
+
+        const columns = [
+            [
+                'Oude opleiding', 'Oude code', 'Oude naam', 'Oude toetsvorm', 'Oude weging', 'Oude ec',
+                'Nieuwe opleiding', 'Nieuwe code', 'Nieuwe naam', 'Nieuwe toetsvorm', 'Nieuwe weging', 'Nieuwe ec',
+                'Periode', 'Leider', 'Opmerking'
+            ]
+        ]
 
         const worksheetCols = [
             {wch:30},
             {wch:30},
             {wch:30},
             {wch:30},
+            {wch:13},
             {wch:10},
-            {wch:10},
             {wch:30},
             {wch:30},
             {wch:30},
             {wch:30},
-            {wch:10},
+            {wch:13},
             {wch:10},
             {wch:10},
             {wch:30},
             {wch:30}
         ];
 
-        const worksheet = XLSX.utils.json_to_sheet(exportData);
+        const worksheet = XLSX.utils.book_new();
         worksheet['!cols'] = worksheetCols;
+
+        XLSX.utils.sheet_add_aoa(worksheet, columns);
+        XLSX.utils.sheet_add_json(worksheet, exportData, { origin: 'A2', skipHeader: true });
 
         const workbook = XLSX.utils.book_new();
 
