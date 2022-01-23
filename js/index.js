@@ -14,3 +14,4 @@ import * as tentamentoevoegen from './modules/tentamen-toevoegen.js';
 import * as dearchiveerknop from './modules/tentamen-archief.js';
 import * as verwijderknop from './modules/tentamen-archief.js';
 import * as zoekbalk from './modules/zoekbalk.js';
+import * as exportKnop from './modules/export-knop.js';
