@@ -77,7 +77,7 @@ class Importeren extends LitElement {
         };
         reader.readAsBinaryString(file);
 
-        window.location.href = '/pages/controleren.html';
+        window.location.href = '/pages/keuren.html';
     }
 
     toggleMessage(bool) {

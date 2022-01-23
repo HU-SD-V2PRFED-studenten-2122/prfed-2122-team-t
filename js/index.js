@@ -11,3 +11,6 @@ import * as controleren from './modules/controleren.js';
 import * as authenticatieknop from './modules/authenticatie-knop.js';
 import * as knop from './modules/knop.js';
 import * as tentamentoevoegen from './modules/toevoegen.js';
+import * as keurtabel from './modules/keuren.js';
+import * as tentamen_aanpassen_keuren from './modules/tentamen-keuren-aanpassen.js';
+import * as tentamen_details_keuren from './modules/tentamen-keuren-details.js';
