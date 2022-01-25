@@ -74,10 +74,7 @@ export class TentamenAanpassen extends LitElement {
                     </div>
                 </div>
 
-                <button class="btn btn-primary float-right" id="opslaanButton">Opslaan</button>
-                <button class="btn btn-primary float-right" @click="${this.formSwitch}" id="aanpassenKnop">
-                    Aanpassen
-                </button>
+                <button class="btn btn-primary float-right" id="opslaanButton" >Opslaan</button>
             </form>
         `;
     }
@@ -103,42 +100,6 @@ export class TentamenAanpassen extends LitElement {
 
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
-        this.setForm();
-    }
-
-    setForm() {
-        if (this.mode === 'archief') {
-            this.formSwitch();
-        } else if (this.mode === 'keuren') {
-            this.formSwitch();
-        } else {
-            document.getElementById("aanpassenKnop").style.display = "none";
-        }
-    }
-
-    formSwitch() {
-        const inputFields = document.getElementById('aanpassen-form').querySelectorAll('input, textarea');
-
-        const opslaanButton = document.getElementById('opslaanButton');
-        const aanpassenButton = document.getElementById('aanpassenKnop');
-
-        if (opslaanButton.getAttribute('disabled')) {
-
-            for (const fields of inputFields) {
-                fields.removeAttribute("readonly");
-            }
-            opslaanButton.removeAttribute("disabled");
-            aanpassenButton.setAttribute("disabled", 'true');
-
-        } else {
-
-            for (const fields of inputFields) {
-                fields.setAttribute("readonly", 'true');
-            }
-            aanpassenButton.removeAttribute("disabled");
-            opslaanButton.setAttribute("disabled", 'true');
-
-        }
     }
 
     submitChanges(event) {
@@ -166,10 +127,8 @@ export class TentamenAanpassen extends LitElement {
 
         if (this.mode === 'archief') {
             storage.editArchiefTentamen(tentamen.id, tentamen);
-            this.formSwitch();
         } else if (this.mode === 'keuren') {
             storage.editDraftTentamen(tentamen.id, tentamen);
-            this.formSwitch();
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;
