@@ -1,6 +1,6 @@
-import {LitElement, html, css} from "lit";
-import * as storage from "../storage.js";
-import {Tentamen} from "../domein/tentamen";
+import {LitElement, html, css} from 'lit';
+import * as storage from '../../storage';
+import {Tentamen} from '../../domein/tentamen';
 
 class keurTabel extends LitElement {
     tentamensSelected = [];
@@ -10,7 +10,6 @@ class keurTabel extends LitElement {
 
         sessionStorage.setItem('selected-tentamens-id', '[]')
     }
-
 
     render() {
         return html`
@@ -64,15 +63,12 @@ class keurTabel extends LitElement {
         document.querySelector("#message").style.display = 'none';
     }
 
-
-
     fillTable() {
         const table = document.getElementById("tableData").getElementsByTagName('tbody')[0];
         table.innerHTML = ""
 
         const tentamens = storage.getDraftTentamens();
         for (let i = 0; i < tentamens.length; i++) {
-
             table.insertRow().innerHTML =
                 "<tr>" +
                 "<th scope='row'>" + tentamens[i].code + "</th>" +
@@ -92,9 +88,7 @@ class keurTabel extends LitElement {
                     td.setAttribute("onclick", "location.href='tentamen-keuren-details.html?id=" + tentamens[i].id + "'");
                 }
             }
-
         }
-
     }
 
     getSelectedCheckboxes() {
@@ -134,9 +128,9 @@ class keurTabel extends LitElement {
     }
 
     getSelectedTentamens() {
-        var draftTentamens = storage.getDraftTentamens();
-        var selectedTentamens = storage.getAllSelectedTentamenId();
-        var saveTentamens = [];
+        let draftTentamens = storage.getDraftTentamens();
+        let selectedTentamens = storage.getAllSelectedTentamenId();
+        let saveTentamens = [];
 
         for (var x = 0; x < draftTentamens.length; x++) {
             for (var i = 0; i < selectedTentamens.length; i++) {
@@ -159,8 +153,8 @@ class keurTabel extends LitElement {
     }
 
     selectAllandDeSelectAll() {
-        var checkboxes = document.getElementsByName('chk');
-        var selectAllBox = this.querySelector('#checkbox-select-all');
+        let checkboxes = document.getElementsByName('chk');
+        let selectAllBox = this.querySelector('#checkbox-select-all');
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].type == 'checkbox') {
                 if (this.querySelector('#checkbox-select-all').checked === true) {
@@ -175,7 +169,6 @@ class keurTabel extends LitElement {
 
 
     goedkeuren(e) {
-        e.preventDefault();
         if (storage.getAllSelectedTentamenId().length === 0) {
             this.toggleMessage(true, 'U heeft niks geselecteerd.');
         }
@@ -207,16 +200,16 @@ class keurTabel extends LitElement {
                 !nieuweCode ||
                 !nieuweNaam ||
                 !nieuweToets ||
-                !nieuweWeging ||
-                !nieuweEC ||
+                nieuweWeging == null ||
+                nieuweEC == null ||
                 !nieuwePeriode ||
                 !leider ||
                 !oudeOpleiding ||
                 !oudeCode ||
                 !oudeNaam ||
                 !oudeToets ||
-                !oudeWeging ||
-                !oudeEC) {
+                oudeWeging == null ||
+                oudeEC == null) {
                 this.toggleMessage(true, 'Een of meerdere tentamens niet volledig ingevuld.');
                 e.preventDefault();
                 return;
@@ -251,10 +244,10 @@ class keurTabel extends LitElement {
     }
 
     autokeuren() {
-        var draftTentamens = storage.getDraftTentamens();
+        let draftTentamens = storage.getDraftTentamens();
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var auto_tentamens = [];
+        let auto_tentamens = [];
 
         Array.from(checkboxes)
             .map(i => {
@@ -299,8 +292,8 @@ class keurTabel extends LitElement {
     }
 
     loadSelectedCheckboxes() {
-        var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var ids = storage.getSavedTentamenId();
+        let checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
+        let ids = storage.getSavedTentamenId();
 
         if (ids.length > 0) {
             Array.from(checkboxes)

@@ -1,16 +1,16 @@
-import * as storage from '../storage.js'
+import * as storage from '../../storage.js'
 import {LitElement, html} from "lit";
-import {Tentamen} from "../domein/tentamen";
-import {FormGroupText} from "./form-group-text.js";
-import {FormGroupNumber} from "./form-group-number.js";
-import {FormGroupTextarea} from "./form-group-textarea.js";
+
+import {Tentamen} from '../../domein/tentamen'
+import '../form/form-group-textarea'
+import '../form/form-group-text'
+import '../form/form-group-number'
 
 export class TentamenAanpassen extends LitElement {
 
     static get properties() {
         return {
             mode: {type: String},
-            editBaar: {type: String},
             tentamen: {type: Tentamen}
         }
     }

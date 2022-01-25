@@ -1,6 +1,6 @@
 import {LitElement, html, css} from "lit";
-import * as storage from "../storage.js";
-import * as tableHelper from "../table.js";
+import * as storage from '../../storage';
+import * as tableHelper from '../../table';
 
 class Zoekbalk extends LitElement {
 

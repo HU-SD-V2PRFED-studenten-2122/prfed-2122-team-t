@@ -1,7 +1,7 @@
-import {LitElement, html, css} from "lit";
-import * as XLSX from "xlsx";
-import {Tentamen} from "../domein/tentamen";
-import * as storage from '../storage.js';
+import * as storage from '../../storage';
+import {LitElement, html, css} from 'lit';
+import * as XLSX from 'xlsx';
+import {Tentamen} from '../../domein/tentamen';
 
 class Importeren extends LitElement {
 
@@ -77,7 +77,7 @@ class Importeren extends LitElement {
         };
         reader.readAsBinaryString(file);
 
-        window.location.href = '/pages/keuren.html';
+        window.location.href = '../../../pages/keuren.html';
     }
 
     toggleMessage(bool) {

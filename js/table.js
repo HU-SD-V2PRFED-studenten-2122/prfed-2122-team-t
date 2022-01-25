@@ -1,4 +1,4 @@
-import {Tentamen} from "./domein/tentamen.js";
+import {Tentamen} from './domein/tentamen.js';
 
 /**
  * Voeg een row toe aan een tabel

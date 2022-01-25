@@ -1,5 +1,5 @@
-import {Tentamen} from './domein/tentamen.js';
-import {Gebruiker} from './domein/gebruiker.js';
+import {Tentamen} from './domein/tentamen';
+import {Gebruiker} from './domein/gebruiker';
 
 // Test data
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
@@ -71,7 +71,6 @@ export function findDraftTentamenById(id) {
 
     return null;
 }
-
 
 /**
  * Sla een tentamen op in de sessie
@@ -244,8 +243,6 @@ export function deArchifeerTentamen(tentamen){
     saveTentamen(tentamen);
 }
 
-
-
 /**
  * Haal alle gebruikers op in de sessie
  * @returns {array}
@@ -308,6 +305,7 @@ export function publishDraftTentamen(tentamen) {
     deleteDraftTentamen(tentamen.id);
     saveTentamen(tentamen);
 }
+
 /**
  * Haal alle geselecteerde tentamen-id's op in de sessie - keurenpagina
  * @returns {array}
@@ -334,7 +332,6 @@ export function getSavedTentamenId() {
     }
     return [];
 }
-
 
 /**
  * Verwijder een geselecteerde tentamen uit de sessie

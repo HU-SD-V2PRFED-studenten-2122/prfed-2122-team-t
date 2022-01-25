@@ -1,5 +1,5 @@
-import {html, css, LitElement} from "lit";
-import * as storage from "../storage.js";
+import {html, css, LitElement} from 'lit';
+import * as storage from '../../storage';
 
 class LoginComponent extends LitElement {
 
@@ -37,7 +37,6 @@ class LoginComponent extends LitElement {
                         <a href="/pages/home.html" class="btn btn-primary float-right" style="margin-right: 10px;"
                            tabindex="0">Terug</a>
                     </form>
-
                 </div>
         `
     }
@@ -74,13 +73,12 @@ class LoginComponent extends LitElement {
                     if (gebruiker.email === email && gebruiker.wachtwoord === wachtwoord) {
                         sessionStorage.setItem("ingelogd", "ja");
                         succes = true;
-                        window.location = '/pages/home.html';
+                        window.location = '../../../pages/home.html';
                     }
                 })
             }
-            if (!succes){
+            if (!succes) {
                 this.renderRoot.querySelector("#logintext").textContent = 'Inloggegevens kloppen niet!';
-
             }
         } else {
             this.renderRoot.querySelector("#logintext").textContent = 'E-mail en wachtwoord zijn leeg.';

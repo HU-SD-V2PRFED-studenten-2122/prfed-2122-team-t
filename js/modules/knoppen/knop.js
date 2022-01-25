@@ -1,5 +1,5 @@
-import {html, LitElement} from "lit";
-import * as storage from "../storage.js";
+import {html, LitElement} from 'lit';
+import * as storage from '../../storage';
 
 class Knop extends LitElement {
 

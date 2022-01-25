@@ -1,6 +1,6 @@
-import {html, LitElement} from "lit";
-import * as XLSX from "xlsx";
-import * as storage from "../storage.js";
+import {html, LitElement} from 'lit';
+import * as XLSX from 'xlsx';
+import * as storage from '../../storage';
 
 class ExportKnop extends LitElement {
 

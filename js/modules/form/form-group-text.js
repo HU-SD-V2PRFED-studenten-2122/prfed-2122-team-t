@@ -1,4 +1,4 @@
-import {html, LitElement} from "lit";
+import {html, LitElement} from 'lit';
 
 export class FormGroupText extends LitElement {
 
@@ -9,7 +9,8 @@ export class FormGroupText extends LitElement {
             'text': {attribute: true},
             'placeholder': {attribute: true},
             'value': {attribute: true},
-            'colSize': {attribute: true}
+            'colSize': {attribute: true},
+            'plaintext': {attribute: true}
         }
     }
 
@@ -18,7 +19,8 @@ export class FormGroupText extends LitElement {
     }
 
     render() {
-        return html`
+        if (this.plaintext == undefined) {
+            return html`
             <div class="form-group row">
                 <label for="${this.name}" class="col-4 col-form-label" aria-label="${this.ariaLabelText}">${this.text}:
                     *</label>
@@ -29,6 +31,17 @@ export class FormGroupText extends LitElement {
                 </div>
             </div>
         `;
+        } else {
+            return html`
+            <div class="form-group row">
+                <label for="${this.name}" class="col-4 col-form-label" style="font-family: 'Segoe UI Semibold'" aria-label="${this.ariaLabelText}">${this.text}:
+                    *</label>
+                <div class="col-${this.colSize}">
+                    <input value="${this.value}" id="${this.name}" name="${this.name}" type="text" class="form-control-plaintext" readonly>
+                </div>
+            </div>
+        `;
+        }
     }
 }
 

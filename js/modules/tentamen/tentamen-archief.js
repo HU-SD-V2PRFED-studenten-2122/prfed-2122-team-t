@@ -1,9 +1,8 @@
-import * as storage from '../storage.js'
+import * as storage from '../../storage.js'
 import {LitElement, html} from "lit";
-import {Tentamen} from "../domein/tentamen";
+import '../../domein/tentamen';
 
-
-export class dearchiveerKnop extends LitElement {
+export class DearchiveerKnop extends LitElement {
 
     render() {
         return html`
@@ -21,12 +20,12 @@ export class dearchiveerKnop extends LitElement {
 
     dearchiveren() {
         storage.deArchifeerTentamen(storage.findArchiefTentamenById(storage.getParam('id')));
-        window.location = '../../pages/home-archief.html';
+        window.location = '../../../pages/home-archief.html';
     }
 }
 
 
-export class verwijderKnop extends LitElement {
+export class VerwijderKnop extends LitElement {
 
     render() {
         return html`
@@ -44,9 +43,9 @@ export class verwijderKnop extends LitElement {
 
     verwijder() {
         storage.verwijderVanArchief(storage.findArchiefTentamenById(storage.getParam('id')).id)
-        window.location = '../../pages/home-archief.html';
+        window.location = '../../../pages/home-archief.html';
     }
 }
 
-customElements.define('dearchiveer-knop', dearchiveerKnop);
-customElements.define('verwijder-knop', verwijderKnop);
+customElements.define('dearchiveer-knop', DearchiveerKnop);
+customElements.define('verwijder-knop', VerwijderKnop);
