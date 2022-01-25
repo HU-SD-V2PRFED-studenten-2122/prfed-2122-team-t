@@ -127,8 +127,10 @@ export class TentamenAanpassen extends LitElement {
 
         if (this.mode === 'archief') {
             storage.editArchiefTentamen(tentamen.id, tentamen);
+            window.location = '/pages/home-archief.html';
         } else if (this.mode === 'keuren') {
             storage.editDraftTentamen(tentamen.id, tentamen);
+            window.location = '/pages/keuren.html';
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;
