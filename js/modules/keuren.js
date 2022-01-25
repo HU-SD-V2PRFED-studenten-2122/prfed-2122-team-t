@@ -39,7 +39,6 @@ class keurTabel extends LitElement {
             </div>
             <div role="alert" class="alert alert-danger" id="message"
                  style="display: none; margin-left: 12px; margin-right: 12px; margin-top: 12px;">
-
             </div>
         `;
     }
@@ -176,7 +175,6 @@ class keurTabel extends LitElement {
 
 
     goedkeuren(e) {
-
         if (storage.getAllSelectedTentamenId().length === 0) {
             this.toggleMessage(true, 'U heeft niks geselecteerd.');
         }
@@ -300,7 +298,6 @@ class keurTabel extends LitElement {
     }
 
     loadSelectedCheckboxes() {
-
         var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         var ids = storage.getSavedTentamenId();
 

@@ -202,11 +202,11 @@ export class TentamenAanpassen extends LitElement {
 
     setTentamen() {
         if (this.mode === 'archief') {
-            this.tentamen = storage.findArchiefTentamenById(this.getParam('id'));
+            this.tentamen = storage.findArchiefTentamenById(storage.getParam('id'));
         } else if (this.mode === 'keuren') {
-            this.tentamen = storage.findDraftTentamenById(this.getParam('id'));
+            this.tentamen = storage.findDraftTentamenById(storage.getParam('id'));
         } else {
-            this.tentamen = storage.findTentamenById(this.getParam('id'));
+            this.tentamen = storage.findTentamenById(storage.getParam('id'));
         }
     }
 
@@ -282,17 +282,6 @@ export class TentamenAanpassen extends LitElement {
         } else {
             storage.editTentamen(tentamen.id, tentamen);
             window.location = '/pages/tentamen.html?id=' + tentamen.id;
-        }
-    }
-
-    getParam(name) {
-        const parts = window.location.href.split('?');
-
-        if (parts.length > 1) {
-            name = encodeURIComponent(name);
-            const params = parts[1].split('&');
-            const found = params.filter(el => (el.split('=')[0] === name) && el);
-            if (found.length) return decodeURIComponent(found[0].split('=')[1]);
         }
     }
 }

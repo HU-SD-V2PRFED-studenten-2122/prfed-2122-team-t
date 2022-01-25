@@ -181,7 +181,7 @@ export class TentamenDetails extends LitElement {
     connectedCallback() {
         super.connectedCallback();
 
-        this.tentamen = storage.findTentamenById(getParam('id'));
+        this.tentamen = storage.findTentamenById(storage.getParam('id'));
     }
 }
 
@@ -210,7 +210,7 @@ export class TentamenDetailsButtons extends LitElement {
     connectedCallback() {
         super.connectedCallback();
 
-        this.id = getParam('id');
+        this.id = storage.getParam('id');
     }
 
     archiveren() {
@@ -218,17 +218,6 @@ export class TentamenDetailsButtons extends LitElement {
         storage.deleteTentamen(this.id);
 
         window.location = '/pages/home.html'
-    }
-}
-
-function getParam(name) {
-    const parts = window.location.href.split('?');
-
-    if (parts.length > 1) {
-        name = encodeURIComponent(name);
-        const params = parts[1].split('&');
-        const found = params.filter(el => (el.split('=')[0] === name) && el);
-        if (found.length) return decodeURIComponent(found[0].split('=')[1]);
     }
 }
 

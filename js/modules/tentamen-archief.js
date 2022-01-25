@@ -20,22 +20,9 @@ export class dearchiveerKnop extends LitElement {
     }
 
     dearchiveren() {
-        storage.deArchifeerTentamen(storage.findArchiefTentamenById(this.getParam('id')));
+        storage.deArchifeerTentamen(storage.findArchiefTentamenById(storage.getParam('id')));
         window.location = '../../pages/home-archief.html';
     }
-
-    getParam(name) {
-        const parts = window.location.href.split('?');
-
-        if (parts.length > 1) {
-            name = encodeURIComponent(name);
-            const params = parts[1].split('&');
-            const found = params.filter(el => (el.split('=')[0] === name) && el);
-            if (found.length) return decodeURIComponent(found[0].split('=')[1]);
-        }
-    }
-
-
 }
 
 
@@ -56,22 +43,9 @@ export class verwijderKnop extends LitElement {
     }
 
     verwijder() {
-        storage.verwijderVanArchief(storage.findArchiefTentamenById(this.getParam('id')).id)
+        storage.verwijderVanArchief(storage.findArchiefTentamenById(storage.getParam('id')).id)
         window.location = '../../pages/home-archief.html';
     }
-
-    getParam(name) {
-        const parts = window.location.href.split('?');
-
-        if (parts.length > 1) {
-            name = encodeURIComponent(name);
-            const params = parts[1].split('&');
-            const found = params.filter(el => (el.split('=')[0] === name) && el);
-            if (found.length) return decodeURIComponent(found[0].split('=')[1]);
-        }
-    }
-
-
 }
 
 customElements.define('dearchiveer-knop', dearchiveerKnop);
