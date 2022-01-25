@@ -175,6 +175,7 @@ class keurTabel extends LitElement {
 
 
     goedkeuren(e) {
+        e.preventDefault();
         if (storage.getAllSelectedTentamenId().length === 0) {
             this.toggleMessage(true, 'U heeft niks geselecteerd.');
         }
@@ -202,20 +203,20 @@ class keurTabel extends LitElement {
             const oudeWeging = tentamen.weging;
             const oudeEC = tentamen.ec;
 
-            if (nieuweOpleiding === null ||
-                nieuweCode === null ||
-                nieuweNaam === null ||
-                nieuweToets === null ||
-                nieuweWeging === null ||
-                nieuweEC === null ||
-                nieuwePeriode === null ||
-                leider === null ||
-                oudeOpleiding === null ||
-                oudeCode === null ||
-                oudeNaam === null ||
-                oudeToets === null ||
-                oudeWeging === null ||
-                oudeEC === null) {
+            if (!nieuweOpleiding ||
+                !nieuweCode ||
+                !nieuweNaam ||
+                !nieuweToets ||
+                !nieuweWeging ||
+                !nieuweEC ||
+                !nieuwePeriode ||
+                !leider ||
+                !oudeOpleiding ||
+                !oudeCode ||
+                !oudeNaam ||
+                !oudeToets ||
+                !oudeWeging ||
+                !oudeEC) {
                 this.toggleMessage(true, 'Een of meerdere tentamens niet volledig ingevuld.');
                 e.preventDefault();
                 return;
