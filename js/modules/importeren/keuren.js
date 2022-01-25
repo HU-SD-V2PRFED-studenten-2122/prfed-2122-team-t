@@ -17,7 +17,7 @@ class keurTabel extends LitElement {
             <div class="container">
 
                 <div style="height: 500px; overflow-y: auto; box-sizing: border-box;border: solid 1px rgb(217,217,217);background-color: rgba(0,0,0,.04);">
-                    <table @click="${this.resetMessage}" id="tableData" class="table table-bordered table-striped table-hover"
+                    <table id="tableData" class="table table-bordered table-striped table-hover"
                            style="position: relative">
                         <thead style="position: sticky;top: 0; background: #ffffff;box-shadow: inset 1px 1px rgb(217,217,217), 0 1px rgb(217,217,217)">
                         <tr>
@@ -57,10 +57,6 @@ class keurTabel extends LitElement {
         document.querySelector('#afkeuren-btn').addEventListener('click', this.afkeuren.bind(this))
         document.querySelector('#autokeuren-btn').addEventListener('click', this.autokeuren.bind(this))
         this.querySelector('#checkbox-select-all').addEventListener('change', this.getSelectedCheckboxes.bind(this))
-    }
-
-    resetMessage(){
-        document.querySelector("#message").style.display = 'none';
     }
 
     fillTable() {
@@ -169,10 +165,8 @@ class keurTabel extends LitElement {
 
 
     goedkeuren(e) {
-        if (storage.getAllSelectedTentamenId().length === 0) {
-            this.toggleMessage(true, 'U heeft niks geselecteerd.');
-        }
-
+        e.preventDefault();
+        document.getElementById('message').textContent = '';
         this.getSelectedTentamens();
 
         storage.getSavedTentamens().map(tentamen => {
@@ -224,29 +218,37 @@ class keurTabel extends LitElement {
         })
         sessionStorage.setItem('saved-selected-tentamens', '[]');
 
-        if (document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0) {
+        if (storage.getAllSelectedTentamenId().length === 0) {
+            this.toggleMessage(true, 'U heeft niks geselecteerd.');
+        }
+
+        if (document.getElementById('message').textContent === '') {
             window.location.reload();
         }
     }
 
-    afkeuren() {
-        if (storage.getAllSelectedTentamenId().length === 0) {
-            this.toggleMessage(true, 'U heeft niks geselecteerd');
-            return;
-        }
+    afkeuren(e) {
+        e.preventDefault();
+        document.getElementById('message').textContent = '';
 
         storage.getAllSelectedTentamenId().map(id => {
             storage.deleteDraftTentamen(id);
         })
-        if (document.querySelector("#message").style.display === 'none' && storage.getAllSelectedTentamenId().length > 0) {
+
+        if (storage.getAllSelectedTentamenId().length === 0) {
+            this.toggleMessage(true, 'U heeft niks geselecteerd');
+            return;
+        }
+        if (document.getElementById('message').textContent === '') {
             window.location.reload();
         }
     }
 
-    autokeuren() {
+    autokeuren(e) {
+        e.preventDefault();
+
         let draftTentamens = storage.getDraftTentamens();
-        var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
-        var checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
+        let checkboxes = document.querySelectorAll("input[type=checkbox][id=checkbox-tentamen]");
         let auto_tentamens = [];
 
         Array.from(checkboxes)
@@ -288,7 +290,7 @@ class keurTabel extends LitElement {
             this.toggleMessage(true, 'Een of meerdere tentamens niet volledig ingevuld.')
         }
 
-        this.goedkeuren();
+        this.goedkeuren(e);
     }
 
     loadSelectedCheckboxes() {

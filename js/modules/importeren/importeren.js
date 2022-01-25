@@ -7,7 +7,7 @@ class Importeren extends LitElement {
 
     render() {
         return html`
-            <div role="alert" class="alert alert-danger" id="message" style="display: none">
+            <div role="alert" class="alert alert-danger" id="message2" style="display: none">
                 Voer een file in
             </div>
             
@@ -81,7 +81,7 @@ class Importeren extends LitElement {
     }
 
     toggleMessage(bool) {
-        const message = document.getElementById('message');
+        const message = document.getElementById('message2');
         if (bool == true)
             message.style.display = 'block';
         else
