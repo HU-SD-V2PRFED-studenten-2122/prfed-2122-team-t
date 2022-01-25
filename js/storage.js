@@ -1,5 +1,5 @@
-import {Tentamen} from './domein/tentamen.js';
-import {Gebruiker} from './domein/gebruiker.js';
+import {Tentamen} from './domein/tentamen';
+import {Gebruiker} from './domein/gebruiker';
 
 // Test data
 let gebruiker = new Gebruiker('test@gmail.com', 'test123', 'onderwijs_coordinator');
@@ -34,6 +34,38 @@ export function findTentamenById(id) {
         for (let i = 0; i < getTentamens().length; i++) {
             if (getTentamens()[i].id == id)
                 return getTentamens()[i];
+        }
+    }
+
+    return null;
+}
+
+/**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findArchiefTentamenById(id) {
+    if (sessionStorage.getItem('archief') != null) {
+        for (let i = 0; i < getArchief().length; i++) {
+            if (getArchief()[i].id == id)
+                return getArchief()[i];
+        }
+    }
+
+    return null;
+}
+
+/**
+ *
+ * @param id
+ * @returns {Tentamen}
+ */
+export function findDraftTentamenById(id) {
+    if (sessionStorage.getItem('draftTentamens') != null) {
+        for (let i = 0; i < getDraftTentamens().length; i++) {
+            if (getDraftTentamens()[i].id == id)
+                return getDraftTentamens()[i];
         }
     }
 
@@ -107,6 +139,51 @@ export function editTentamen(id, tentamen) {
 }
 
 /**
+ * Wijzig een draft-tentamen
+ * @param {number} id
+ * @param {Tentamen} tentamen
+ */
+export function editDraftTentamen(id, tentamen) {
+    let tentamens = [];
+
+    getDraftTentamens().forEach(function (element) {
+        tentamens.push(element);
+    });
+
+    for (let i = 0; i < tentamens.length; i++) {
+        if (tentamens[i].id == id) {
+            tentamen.id = id;
+            tentamens[i] = tentamen;
+        }
+    }
+
+    sessionStorage.setItem('draftTentamens', JSON.stringify(tentamens));
+}
+
+
+/**
+ * Wijzig een archief tentamen
+ * @param {number} id
+ * @param {Tentamen} tentamen
+ */
+export function editArchiefTentamen(id, tentamen) {
+    let tentamens = [];
+
+    getArchief().forEach(function (element) {
+        tentamens.push(element);
+    });
+
+    for (let i = 0; i < tentamens.length; i++) {
+        if (tentamens[i].id == id) {
+            tentamen.id = id;
+            tentamens[i] = tentamen;
+        }
+    }
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamens));
+}
+
+/**
  * Verwijder een tentamen uit de sessie
  * @param {number} id
  */
@@ -136,6 +213,34 @@ export function getTentamens() {
  */
 export function getArchief() {
     return JSON.parse(sessionStorage.getItem('archief'));
+}
+
+/**
+ * Verwijder een tentamen van de archief
+ * @param {number} id
+ */
+export function verwijderVanArchief(id){
+    let tentamenArchief = [];
+    getArchief().forEach(function (geArchiveerdeTentamen) {
+
+        if (geArchiveerdeTentamen.id != id) {
+            tentamenArchief.push(geArchiveerdeTentamen);
+        }
+    });
+
+    console.log(tentamenArchief)
+
+    sessionStorage.setItem('archief', JSON.stringify(tentamenArchief));
+
+}
+
+/**
+ * Verwijder een tentamen van de archief en sla het weer op in de zichtbare tentamen lijst.
+ * @param {Tentamen} tentamen
+ */
+export function deArchifeerTentamen(tentamen){
+    verwijderVanArchief(tentamen.id);
+    saveTentamen(tentamen);
 }
 
 /**
@@ -202,11 +307,65 @@ export function publishDraftTentamen(tentamen) {
 }
 
 /**
+ * Haal alle geselecteerde tentamen-id's op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getAllSelectedTentamenId() {
+    return JSON.parse(sessionStorage.getItem('selected-tentamens-id'));
+}
+
+/**
+ * Haal alle geselecteerde tentamenobjecten op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getSavedTentamens() {
+    return JSON.parse(sessionStorage.getItem('saved-selected-tentamens'));
+}
+
+/**
+ * Haal alle geselecteerde tentamen-id's op in de sessie - keurenpagina
+ * @returns {array}
+ */
+export function getSavedTentamenId() {
+    if(sessionStorage.getItem('saved-tentamens-id')){
+        return JSON.parse(sessionStorage.getItem('saved-tentamens-id'));
+    }
+    return [];
+}
+
+/**
+ * Verwijder een geselecteerde tentamen uit de sessie
+ * @param {number} id
+ */
+export function deleteSavedTentamen(id) {
+    let tentamens = [];
+
+    getSavedTentamens().forEach(function (element) {
+        if (element.id != id) {
+            tentamens.push(element);
+        }
+    });
+
+    sessionStorage.setItem('saved-selected-tentamens', JSON.stringify(tentamens));
+}
+
+/**
  * Check of iemand is ingelogd
  * @returns {boolean}
  */
 export function checkLoggedIn(){
     return sessionStorage.getItem("ingelogd") == 'ja';
+}
+
+export function getParam(name) {
+    const parts = window.location.href.split('?');
+
+    if (parts.length > 1) {
+        name = encodeURIComponent(name);
+        const params = parts[1].split('&');
+        const found = params.filter(el => (el.split('=')[0] === name) && el);
+        if (found.length) return decodeURIComponent(found[0].split('=')[1]);
+    }
 }
 
 /**

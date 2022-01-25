@@ -1,13 +1,13 @@
-import {LitElement, html, css} from "lit";
-import * as XLSX from "xlsx";
-import {Tentamen} from "../domein/tentamen";
-import * as storage from '../storage.js';
+import * as storage from '../../storage';
+import {LitElement, html, css} from 'lit';
+import * as XLSX from 'xlsx';
+import {Tentamen} from '../../domein/tentamen';
 
 class Importeren extends LitElement {
 
     render() {
         return html`
-            <div class="alert alert-danger" id="message" style="display: none">
+            <div role="alert" class="alert alert-danger" id="message2" style="display: none">
                 Voer een file in
             </div>
             
@@ -77,11 +77,11 @@ class Importeren extends LitElement {
         };
         reader.readAsBinaryString(file);
 
-        window.location.href = '/pages/controleren.html';
+        window.location.href = '../../../pages/keuren.html';
     }
 
     toggleMessage(bool) {
-        const message = document.getElementById('message');
+        const message = document.getElementById('message2');
         if (bool == true)
             message.style.display = 'block';
         else

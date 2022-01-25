@@ -1,12 +1,14 @@
-import {html, LitElement} from "lit";
-import * as storage from '../storage.js'
+import {html, LitElement} from 'lit';
+import * as storage from '../../storage'
 
 class AuthenticatieKnop extends LitElement {
 
     render() {
         return html`
             <a class="btn btn-primary" tabindex="0" id="auth-button" @click="${this.redirect}"></a>
-            <a href="../../pages/home.html" class="btn btn-primary" id="home-button" tabindex="0">Home</a>
+            <a href="../../../pages/home.html" class="btn btn-primary" id="home-button" tabindex="0">Home</a>
+            <a href="../../../index.html" class="btn btn-info" id="info-button" aria-label="Informatie pagina"
+               tabindex="0">?</a>
         `;
     }
 
@@ -28,10 +30,10 @@ class AuthenticatieKnop extends LitElement {
 
     redirect() {
         if (storage.checkLoggedIn()) {
-            window.location.href = '/pages/home.html';
+            window.location.href = '../../../pages/home.html';
             sessionStorage.setItem('ingelogd','nee');
         } else {
-            window.location.href = '/pages/login.html';
+            window.location.href = '../../../pages/login.html';
         }
     }
 }

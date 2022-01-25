@@ -1,52 +1,47 @@
 <!doctype html>
 <html lang="nl">
 <head>
-    <title>HU Tool</title>
+    <title>Archief tentamens</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <div id="background"></div>
+
+<authenticatie-knop-element></authenticatie-knop-element>
 
 <div class="container">
 
     <div class="card">
 
         <div class="card-header" tabindex="0">
-            Conversietool HU
+            Archief tentamens
+
+            <knop-component link="home.html" text="Terug" class="secondary" rechts="true"></knop-component>
         </div>
 
         <div class="card-body">
-
-            <div class="container">
-                <div class="text-center" tabindex="0">
-
-                    <img src="img/hu-logo.png" id="logo" alt="Logo van de Hogeschool Utrecht">
-
-                    <div>
-                        <p class="card-text" id="info-omschrijving">
-                            Welkom op de HU-tool. Deze tool is ontwikkeld voor studenten van de HU. Door de overzichtelijkheid en efficiëntie kunnen de studenten gemakkelijk hun bezemvakken vinden. Heeft u een account? Dan kunt u met de gekregen logingegevens inloggen, anders is de tool ook uitgelogd te gebruiken. Druk op “open tool” hieronder om naar de hoofdpagina van de tool doorgestuurd te worden.
-                        </p>
-                    </div>
-
-                    <knop-component link="pages/home.html" text="Open de tool" class="primary"></knop-component>
-
-                </div>
-            </div>
-
+            <zoekbalk-element archief="true" tabelID="archiefTabel"> </zoekbalk-element>
+            <tentamens-tabel-element archief="true" tabelID="archiefTabel"></tentamens-tabel-element>
         </div>
 
     </div>
 
 </div>
 
-<script src="dist/bundle.js"></script>
+<script>
+    if (sessionStorage.getItem("ingelogd") != 'ja') {
+        window.location.href = '/index.html';
+    }
+</script>
+
+<script src="../dist/bundle.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
