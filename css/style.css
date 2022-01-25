@@ -39,3 +39,9 @@ body {
 .float-right {
     margin-left: 7px !important;
 }
+
+hr {
+    background-color: #000000FF;
+    border: 0 none;
+    height: 1px;
+}

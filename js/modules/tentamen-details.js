@@ -17,7 +17,7 @@ export class TentamenDetails extends LitElement {
                 <div class="row">
                     <div class="col-md-6">
                         <p style="font-weight: bold">Oud Tentamen</p>
-                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                        <hr>
                         <div class="form-group row">
                             <label for="opleiding-oud" class="col-4 col-form-label" aria-label="Oude opleiding"
                                    style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
@@ -77,7 +77,7 @@ export class TentamenDetails extends LitElement {
 
                     <div class="col-md-6">
                         <p style="font-weight: bold">Nieuw Tentamen</p>
-                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                        <hr>
                         <div class="form-group row">
                             <label for="opleiding-nieuw" class="col-4 col-form-label" aria-label="Nieuwe opleiding"
                                    style="font-family: 'Segoe UI Semibold'">Opleiding:</label>
@@ -138,7 +138,7 @@ export class TentamenDetails extends LitElement {
                     </div>
 
                     <div style="width: 100%; padding: 0 15px 0 15px;">
-                        <hr style="background-color: #000000FF;border: 0 none;height: 1px;">
+                        <hr>
                     </div>
 
                     <div class="col-md-6">
