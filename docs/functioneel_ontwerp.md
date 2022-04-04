@@ -25,7 +25,7 @@
 # Klassen
 
 ## Tentamen
-![Toestandsdiagram voor de klasse Tentamen](toestandsdiagram/tentamen.drawio.png)
+![Toestandsdiagram voor de klasse Tentamen](toestandsdiagram/tentamen.png)
 
 ## Gebruiker
 ![Toestandsdiagram voor de klasse Gebruiker](toestandsdiagram/gebruiker.png)
