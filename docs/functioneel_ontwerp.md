@@ -5,22 +5,25 @@
 ![Domein model diagram](modellen/domein_model.png)
 
 ## User stories
-1. Als onderwijscoördinator wil ik tentamens toevoegen zodat leerlingen hun nieuwe tentamens kunnen inzien 
-2. Als onderwijscoördinator wil ik tentamens aanpassen zodat leerlingen hun nieuwe tentamens kunnen inzien 
-3. Als onderwijscoördinator wil ik tentamens archiveren zodat overbodige tentamens niet meer zichtbaar zijn 
-4. Als student wil ik zoeken op tentamens zodat ik weet om welk tentamen het gaat 
-5. Als onderwijscoördinator wil ik excel sheets importeren zodat studenten een overzicht krijgen te zien van hun tentamens 
-6. Als onderwijscoördinator wil ik excel sheets exporteren zodat ik alle informatie uit de applicatie kan halen 
-7. Als onderwijscoördinator wil ik inloggen zodat ik gebruik kan maken van het systeem 
-8. Als onderwijscoördinator wil ik uitloggen zodat ik niet meer gebruik kan maken van het systeem 
-9. Als student wil ik tentamens inzien zodat ik alle informatie heb over een tentamen 
-10. Als onderwijscoördinator wil ik zoeken op tentamens zodat ik weet om welk tentamen het gaat 
-11. Als onderwijscoördinator wil ik een tentamen inzien zodat ik alle informatie heb over een tentamen 
-12. Als student wil ik een homepage zodat ik uitleg krijg over het systeem 
-13. Als onderwijscoördinator wil ik een homepage zodat ik uitleg krijg over het systeem 
-14. Als onderwijscoördinator wil ik een archief inzien van alle tentamens zodat ik een overzicht heb van alle gearchiveerde tentamens 
-15. Als onderwijscoördinator wil ik gearchiveerde tentamens terug kunnen zetten zodat ik fouten terug kan zetten 
-16. Als onderwijscoördinator wil ik meerdere tentamens in 1 keer kunnen beoordelen zodat ik niet handmatig door alles heen moet klikken
+1. Als onderwijscoördinator wil ik alle concept tentamens inzien zodat ik een overzicht heb van alle concept tentamens
+2. Als onderwijscoördinator wil ik meerdere tentamens in 1 keer kunnen beoordelen zodat ik niet handmatig door alles heen moet klikken 
+3. Als onderwijscoördinator wil ik gearchiveerde tentamens terug kunnen zetten zodat ik fouten terug kan zetten
+4. Als onderwijscoördinator wil ik een archief inzien van alle tentamens zodat ik een overzicht heb van alle gearchiveerde tentamens 
+5. Als onderwijscoördinator wil ik een homepage zodat ik uitleg krijg over het systeem
+6. Als student wil ik een homepage zodat ik uitleg krijg over het systeem
+7. Als onderwijscoördinator wil ik een tentamen inzien zodat ik alle informatie heb over een tentamen 
+8. Als onderwijscoördinator wil ik zoeken op tentamens zodat ik weet om welk tentamen het gaat
+9. Als onderwijscoördinator wil ik een tentamen beoordelen zodat er geen foute tentamens tussen komen te staan
+10. Als gebruiker kan ik een overzicht van alle cursussen krijgen zodat ik een overzicht heb van alle cursussen
+11. Als student wil ik tentamens inzien zodat ik alle informatie heb over een tentamen
+12. Als onderwijscoördinator wil ik uitloggen zodat ik niet meer gebruik kan maken van het systeem 
+13. Als onderwijscoördinator wil ik inloggen zodat ik gebruik kan maken van het systeem
+14. Als onderwijscoördinator wil ik excel sheets exporteren zodat ik alle informatie uit de applicatie kan halen
+15. Als onderwijscoördinator wil ik excel sheets importeren zodat studenten een overzicht krijgen te zien van hun tentamens
+16. Als student wil ik zoeken op tentamens zodat ik weet om welk tentamen het gaat 
+17. Als onderwijscoördinator wil ik tentamens archiveren zodat overbodige tentamens niet meer zichtbaar zijn
+18. Als onderwijscoördinator wil ik tentamens aanpassen zodat leerlingen hun nieuwe tentamens kunnen inzien
+19. Als onderwijscoördinator wil ik tentamens toevoegen zodat leerlingen hun nieuwe tentamens kunnen inzien
 
 # Klassen
 
